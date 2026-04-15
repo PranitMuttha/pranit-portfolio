@@ -23,7 +23,7 @@
   <title>Pranit Narendra Muttha — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Outfit:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -200,6 +200,34 @@
 
     .nav-links a.active,
     .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 0.2rem;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .lang-btn {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.5rem;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      background: rgba(92, 225, 255, 0.2);
       color: var(--primary);
     }
 
@@ -726,6 +754,69 @@
       font-size: 0.9rem;
     }
 
+    .github-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .github-card {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      background: var(--surface);
+      overflow: hidden;
+      transition: all 0.24s ease;
+    }
+
+    .github-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(92, 225, 255, 0.35);
+      background: var(--surface-2);
+    }
+
+    .github-shot {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .github-content {
+      padding: 0.95rem;
+    }
+
+    .github-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .github-meta h3 {
+      font-size: 1.02rem;
+    }
+
+    .star {
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+    }
+
+    .github-content p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .github-content a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
     .timeline {
       display: grid;
       gap: 0.95rem;
@@ -1003,6 +1094,11 @@
         grid-template-columns: 1fr;
       }
 
+      .lang-toggle {
+        margin-right: auto;
+        margin-left: 0.6rem;
+      }
+
       .sticky-cta {
         left: 0.7rem;
         right: 0.7rem;
@@ -1028,21 +1124,26 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#home">Skip to main content</a>
+  <a class="skip-link" href="#home" data-i18n="skipLink">Skip to main content</a>
   <div class="progress" id="progress"></div>
   <canvas id="bg-particles" aria-hidden="true"></canvas>
 
   <nav id="nav">
     <div class="nav-wrap">
       <a class="brand" href="#home">Pranit<span>.dev</span></a>
+      <div class="lang-toggle" aria-label="Language switch">
+        <button class="lang-btn active" id="langEn" type="button" aria-pressed="true">EN</button>
+        <button class="lang-btn" id="langDe" type="button" aria-pressed="false">DE</button>
+      </div>
       <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#case-studies">Case Studies</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about" data-i18n="navAbout">About</a></li>
+        <li><a href="#skills" data-i18n="navSkills">Skills</a></li>
+        <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+        <li><a href="#case-studies" data-i18n="navCaseStudies">Case Studies</a></li>
+        <li><a href="#github-highlights" data-i18n="navGithub">GitHub</a></li>
+        <li><a href="#experience" data-i18n="navExperience">Experience</a></li>
+        <li><a href="#contact" data-i18n="navContact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -1050,16 +1151,16 @@
   <main id="home" class="hero container">
     <div class="hero-grid">
       <section>
-        <div class="hero-tag"><i></i>Open to internships & full-time roles</div>
+        <div class="hero-tag"><i></i><span data-i18n="heroTag">Open to internships & full-time roles</span></div>
         <h1>Pranit <span class="name-accent">Narendra</span> Muttha</h1>
-        <p class="hero-role">I build as a <strong id="typeRole">Data Scientist</strong></p>
-        <p class="hero-text">
+        <p class="hero-role"><span id="rolePrefix" data-i18n="heroRolePrefix">I build as a</span> <strong id="typeRole">Data Scientist</strong></p>
+        <p class="hero-text" data-i18n="heroText">
           I design intelligent products that connect data, AI, and user-focused web experiences. Currently pursuing an MS in Web & Data Science at University of Koblenz, while building real-world SaaS systems and analytics solutions.
         </p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#projects">View my work →</a>
-          <a class="btn btn-ghost" href="#contact">Let's collaborate</a>
-          <a class="btn btn-ghost" href="/resume.html" target="_blank" rel="noreferrer">View Resume</a>
+          <a class="btn btn-primary" href="#projects" data-i18n="heroBtnWork">View my work →</a>
+          <a class="btn btn-ghost" href="#contact" data-i18n="heroBtnCollab">Let's collaborate</a>
+          <a class="btn btn-ghost" href="/resume.html" target="_blank" rel="noreferrer" data-i18n="heroBtnResume">View Resume</a>
         </div>
         <div class="hero-chips">
           <span class="chip">Koblenz, Germany</span>
@@ -1328,6 +1429,56 @@
     </div>
   </section>
 
+  <section id="github-highlights" class="section">
+    <div class="container" data-reveal>
+      <div class="section-head">
+        <div>
+          <p class="label" data-i18n="githubLabel">GitHub Highlights</p>
+          <h2 data-i18n="githubTitle">Pinned <span>Repository Work</span></h2>
+        </div>
+        <p class="subtitle" data-i18n="githubSubtitle">Selected repos with README previews and concise build notes.</p>
+      </div>
+
+      <div class="github-grid">
+        <article class="github-card" data-reveal>
+          <img class="github-shot" src="/assets/github/pranit-portfolio-readme.svg" alt="README screenshot preview for pranit-portfolio repository" loading="lazy" decoding="async" width="1200" height="675" />
+          <div class="github-content">
+            <div class="github-meta">
+              <h3>pranit-portfolio</h3>
+              <span class="star">★ 0</span>
+            </div>
+            <p data-i18n="repoPortfolioNote">What I built: production-ready portfolio with SEO, localization, launch automation scripts, and Netlify deployment flow.</p>
+            <a href="https://github.com/PranitMuttha/pranit-portfolio" target="_blank" rel="noreferrer" data-i18n="repoView">View Repository →</a>
+          </div>
+        </article>
+
+        <article class="github-card" data-reveal>
+          <img class="github-shot" src="/assets/github/muttha-frontend-readme.svg" alt="README screenshot preview for muttha-frontend repository" loading="lazy" decoding="async" width="1200" height="675" />
+          <div class="github-content">
+            <div class="github-meta">
+              <h3>muttha-frontend</h3>
+              <span class="star">★ 0</span>
+            </div>
+            <p data-i18n="repoFrontendNote">What I built: frontend modules for dashboard UX, role-based workflows, and business-facing interfaces.</p>
+            <a href="https://github.com/PranitMuttha/muttha-frontend" target="_blank" rel="noreferrer" data-i18n="repoView">View Repository →</a>
+          </div>
+        </article>
+
+        <article class="github-card" data-reveal>
+          <img class="github-shot" src="/assets/github/muttha-backend-readme.svg" alt="README screenshot preview for muttha-sales-backend repository" loading="lazy" decoding="async" width="1200" height="675" />
+          <div class="github-content">
+            <div class="github-meta">
+              <h3>muttha-sales-backend</h3>
+              <span class="star">★ 0</span>
+            </div>
+            <p data-i18n="repoBackendNote">What I built: backend services for auth, APIs, and data integration supporting operations and analytics use cases.</p>
+            <a href="https://github.com/PranitMuttha/muttha-sales-backend" target="_blank" rel="noreferrer" data-i18n="repoView">View Repository →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container" data-reveal>
       <div class="section-head">
@@ -1377,15 +1528,15 @@
     <div class="container" data-reveal>
       <div class="section-head">
         <div>
-          <p class="label">Contact</p>
-          <h2>Let's Build <span>Something Great</span></h2>
+          <p class="label" data-i18n="contactLabel">Contact</p>
+          <h2 data-i18n="contactTitle">Let's Build <span>Something Great</span></h2>
         </div>
       </div>
 
       <div class="contact-wrap">
         <article class="contact-box" data-reveal>
-          <h3>Direct Links</h3>
-          <p>If you have a role, project, or collaboration in mind, I’m ready to discuss.</p>
+          <h3 data-i18n="directLinksTitle">Direct Links</h3>
+          <p data-i18n="directLinksText">If you have a role, project, or collaboration in mind, I’m ready to discuss.</p>
           <div class="quick-links">
             <a href="mailto:mutthapranit@gmail.com">✉️ mutthapranit@gmail.com</a>
             <a href="tel:+4917668386973">📱 +49 17668386973</a>
@@ -1396,20 +1547,20 @@
         </article>
 
         <article class="contact-box" data-reveal>
-          <h3>Quick Message</h3>
-          <p>Send directly from the website. I usually respond within 24 hours.</p>
+          <h3 data-i18n="quickMessageTitle">Quick Message</h3>
+          <p data-i18n="quickMessageText">Send directly from the website. I usually respond within 24 hours.</p>
           <form id="contactForm" name="portfolio-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="portfolio-contact" />
             <p style="display:none;">
               <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
             </p>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
-            <input type="email" id="email" name="email" placeholder="Your email" required />
-            <textarea id="message" name="message" placeholder="Tell me about your project or role" required></textarea>
-            <button class="btn btn-primary" type="submit">Send message</button>
+            <input type="text" id="name" name="name" placeholder="Your name" data-i18n-placeholder="namePlaceholder" required />
+            <input type="email" id="email" name="email" placeholder="Your email" data-i18n-placeholder="emailPlaceholder" required />
+            <textarea id="message" name="message" placeholder="Tell me about your project or role" data-i18n-placeholder="messagePlaceholder" required></textarea>
+            <button class="btn btn-primary" type="submit" data-i18n="sendMessage">Send message</button>
             <p class="form-status" id="formStatus"></p>
           </form>
-          <p class="tiny">Preferred timezone: CET / IST overlap friendly.</p>
+          <p class="tiny" data-i18n="timezoneNote">Preferred timezone: CET / IST overlap friendly.</p>
         </article>
       </div>
     </div>
@@ -1423,8 +1574,8 @@
   </form>
 
   <aside class="sticky-cta" aria-label="Primary portfolio actions">
-    <a class="primary" href="tel:+4917668386973" data-track="Book Call">Book a Call</a>
-    <a href="/resume.html" target="_blank" rel="noreferrer" data-track="Resume">Resume</a>
+    <a class="primary" href="tel:+4917668386973" data-track="Book Call" data-i18n="bookCall">Book a Call</a>
+    <a href="/resume.html" target="_blank" rel="noreferrer" data-track="Resume" data-i18n="resumeCta">Resume</a>
   </aside>
 
   <footer>
@@ -1440,13 +1591,119 @@
     const year = document.getElementById('year');
     const typeRole = document.getElementById('typeRole');
     const formStatus = document.getElementById('formStatus');
+    const langEn = document.getElementById('langEn');
+    const langDe = document.getElementById('langDe');
+
+    const i18n = {
+      en: {
+        skipLink: 'Skip to main content',
+        navAbout: 'About', navSkills: 'Skills', navProjects: 'Projects', navCaseStudies: 'Case Studies', navGithub: 'GitHub', navExperience: 'Experience', navContact: 'Contact',
+        heroTag: 'Open to internships & full-time roles',
+        heroRolePrefix: 'I build as a',
+        heroText: 'I design intelligent products that connect data, AI, and user-focused web experiences. Currently pursuing an MS in Web & Data Science at University of Koblenz, while building real-world SaaS systems and analytics solutions.',
+        heroBtnWork: 'View my work →', heroBtnCollab: "Let's collaborate", heroBtnResume: 'View Resume',
+        githubLabel: 'GitHub Highlights',
+        githubTitle: 'Pinned Repository Work',
+        githubSubtitle: 'Selected repos with README previews and concise build notes.',
+        repoPortfolioNote: 'What I built: production-ready portfolio with SEO, localization, launch automation scripts, and Netlify deployment flow.',
+        repoFrontendNote: 'What I built: frontend modules for dashboard UX, role-based workflows, and business-facing interfaces.',
+        repoBackendNote: 'What I built: backend services for auth, APIs, and data integration supporting operations and analytics use cases.',
+        repoView: 'View Repository →',
+        contactLabel: 'Contact',
+        contactTitle: "Let's Build Something Great",
+        directLinksTitle: 'Direct Links',
+        directLinksText: 'If you have a role, project, or collaboration in mind, I’m ready to discuss.',
+        quickMessageTitle: 'Quick Message',
+        quickMessageText: 'Send directly from the website. I usually respond within 24 hours.',
+        namePlaceholder: 'Your name', emailPlaceholder: 'Your email', messagePlaceholder: 'Tell me about your project or role',
+        sendMessage: 'Send message',
+        timezoneNote: 'Preferred timezone: CET / IST overlap friendly.',
+        bookCall: 'Book a Call',
+        resumeCta: 'Resume',
+        formSuccess: 'Message sent successfully. I will get back soon.',
+        formError: 'Submission failed. Please email me directly at mutthapranit@gmail.com.'
+      },
+      de: {
+        skipLink: 'Zum Hauptinhalt springen',
+        navAbout: 'Über mich', navSkills: 'Fähigkeiten', navProjects: 'Projekte', navCaseStudies: 'Fallstudien', navGithub: 'GitHub', navExperience: 'Erfahrung', navContact: 'Kontakt',
+        heroTag: 'Offen für Praktika & Festanstellungen',
+        heroRolePrefix: 'Ich arbeite als',
+        heroText: 'Ich entwickle intelligente Produkte, die Daten, KI und benutzerorientierte Web-Erlebnisse verbinden. Derzeit studiere ich Web & Data Science an der Universität Koblenz und baue praxisnahe SaaS- und Analytics-Lösungen.',
+        heroBtnWork: 'Meine Arbeiten ansehen →', heroBtnCollab: 'Zusammenarbeiten', heroBtnResume: 'Lebenslauf ansehen',
+        githubLabel: 'GitHub Highlights',
+        githubTitle: 'Ausgewählte Repository-Arbeiten',
+        githubSubtitle: 'Ausgewählte Repositories mit README-Vorschau und kurzen Entwicklungsnotizen.',
+        repoPortfolioNote: 'Was ich gebaut habe: produktionsreifes Portfolio mit SEO, Lokalisierung, Launch-Automatisierung und Netlify-Deployment.',
+        repoFrontendNote: 'Was ich gebaut habe: Frontend-Module für Dashboard-UX, rollenbasierte Workflows und Business-Interfaces.',
+        repoBackendNote: 'Was ich gebaut habe: Backend-Services für Authentifizierung, APIs und Datenintegration für operative und analytische Anwendungsfälle.',
+        repoView: 'Repository ansehen →',
+        contactLabel: 'Kontakt',
+        contactTitle: 'Lass uns etwas Großartiges bauen',
+        directLinksTitle: 'Direkte Links',
+        directLinksText: 'Wenn du eine Rolle, ein Projekt oder eine Zusammenarbeit im Kopf hast, freue ich mich auf den Austausch.',
+        quickMessageTitle: 'Kurznachricht',
+        quickMessageText: 'Sende direkt über die Website. Ich antworte in der Regel innerhalb von 24 Stunden.',
+        namePlaceholder: 'Ihr Name', emailPlaceholder: 'Ihre E-Mail', messagePlaceholder: 'Erzählen Sie mir von Ihrem Projekt oder Ihrer Rolle',
+        sendMessage: 'Nachricht senden',
+        timezoneNote: 'Bevorzugte Zeitzone: CET / IST-freundlich.',
+        bookCall: 'Anruf vereinbaren',
+        resumeCta: 'Lebenslauf',
+        formSuccess: 'Nachricht erfolgreich gesendet. Ich melde mich bald zurück.',
+        formError: 'Senden fehlgeschlagen. Bitte schreiben Sie mir direkt an mutthapranit@gmail.com.'
+      }
+    };
+
+    const rolesByLanguage = {
+      en: ['Data Scientist', 'AI & Analytics Engineer', 'SaaS Product Builder', 'Web & Data Science Researcher'],
+      de: ['Data Scientist', 'KI- und Analytics-Ingenieur', 'SaaS Produktentwickler', 'Web- & Data-Science-Forscher']
+    };
+
+    let currentLanguage = localStorage.getItem('portfolio-lang') || (navigator.language.startsWith('de') ? 'de' : 'en');
 
     year.textContent = new Date().getFullYear();
 
-    const roles = ['Data Scientist', 'AI & Analytics Engineer', 'SaaS Product Builder', 'Web & Data Science Researcher'];
+    let roles = rolesByLanguage[currentLanguage] || rolesByLanguage.en;
     let roleIndex = 0;
     let charIndex = 0;
     let deleting = false;
+
+    function applyLanguage(language) {
+      const selectedLanguage = i18n[language] ? language : 'en';
+      const dictionary = i18n[selectedLanguage];
+      currentLanguage = selectedLanguage;
+      document.documentElement.lang = selectedLanguage;
+
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.dataset.i18n;
+        if (dictionary[key]) {
+          element.textContent = dictionary[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+        const key = element.dataset.i18nPlaceholder;
+        if (dictionary[key]) {
+          element.placeholder = dictionary[key];
+        }
+      });
+
+      roles = rolesByLanguage[selectedLanguage] || rolesByLanguage.en;
+      roleIndex = 0;
+      charIndex = 0;
+      deleting = false;
+      typeRole.textContent = roles[0];
+
+      langEn.classList.toggle('active', selectedLanguage === 'en');
+      langDe.classList.toggle('active', selectedLanguage === 'de');
+      langEn.setAttribute('aria-pressed', String(selectedLanguage === 'en'));
+      langDe.setAttribute('aria-pressed', String(selectedLanguage === 'de'));
+      localStorage.setItem('portfolio-lang', selectedLanguage);
+    }
+
+    langEn.addEventListener('click', () => applyLanguage('en'));
+    langDe.addEventListener('click', () => applyLanguage('de'));
+
+    applyLanguage(currentLanguage);
 
     function typeLoop() {
       const role = roles[roleIndex];
@@ -1600,11 +1857,11 @@
         if (!response.ok) {
           throw new Error('submit failed');
         }
-        formStatus.textContent = 'Message sent successfully. I will get back soon.';
+        formStatus.textContent = i18n[currentLanguage].formSuccess;
         contactForm.reset();
         gtag('event', 'contact_form_submit', { method: 'netlify_form' });
       } catch (error) {
-        formStatus.textContent = 'Submission failed. Please email me directly at mutthapranit@gmail.com.';
+        formStatus.textContent = i18n[currentLanguage].formError;
       }
     });
 
@@ -1620,20 +1877,33 @@
     const context = canvas.getContext('2d');
     let particles = [];
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let lastFrame = 0;
+    const frameGap = 1000 / 30;
 
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      particles = Array.from({ length: Math.max(40, Math.floor(window.innerWidth / 28)) }, () => ({
+      particles = Array.from({ length: Math.max(24, Math.floor(window.innerWidth / 55)) }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.8 + 0.6
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: (Math.random() - 0.5) * 0.22,
+        r: Math.random() * 1.4 + 0.5
       }));
     }
 
-    function animateParticles() {
+    function animateParticles(timestamp = 0) {
+      if (document.hidden) {
+        requestAnimationFrame(animateParticles);
+        return;
+      }
+
+      if (timestamp - lastFrame < frameGap) {
+        requestAnimationFrame(animateParticles);
+        return;
+      }
+
+      lastFrame = timestamp;
       context.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach((p) => {
         p.x += p.vx;
@@ -1653,8 +1923,8 @@
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.hypot(dx, dy);
-          if (dist < 95) {
-            context.strokeStyle = `rgba(128, 195, 255, ${(95 - dist) / 450})`;
+          if (dist < 78) {
+            context.strokeStyle = `rgba(128, 195, 255, ${(78 - dist) / 380})`;
             context.lineWidth = 1;
             context.beginPath();
             context.moveTo(particles[i].x, particles[i].y);
