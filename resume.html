@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pranit Muttha — Resume</title>
+  <meta name="description" content="Printable resume of Pranit Narendra Muttha." />
+  <style>
+    :root { --bg:#0f1527; --text:#edf2ff; --muted:#9aabcf; --primary:#5ce1ff; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:#070b16; color:var(--text); line-height:1.65; }
+    .topbar { position: sticky; top:0; z-index:10; background:rgba(8,12,26,.85); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,.12); }
+    .topbar-inner { width:min(1000px,92%); margin:auto; display:flex; gap:.6rem; justify-content:space-between; align-items:center; padding:.7rem 0; }
+    .btn { text-decoration:none; border:1px solid rgba(255,255,255,.2); color:var(--text); border-radius:10px; padding:.55rem .8rem; font-size:.9rem; }
+    .btn.primary { background:linear-gradient(120deg,#5ce1ff,#9cefff); color:#051426; border:none; font-weight:600; }
+    main { width:min(1000px,92%); margin:1.4rem auto 2.2rem; background:var(--bg); border:1px solid rgba(255,255,255,.14); border-radius:18px; padding:1.4rem; }
+    h1 { margin:.1rem 0 .4rem; font-size:clamp(1.9rem,4vw,2.7rem); }
+    h2 { margin:1.2rem 0 .55rem; font-size:1.15rem; color:var(--primary); }
+    p, li { color:#dbe5ff; }
+    .meta { color:var(--muted); margin-bottom:.8rem; }
+    .grid { display:grid; gap:.8rem; grid-template-columns: 1fr 1fr; }
+    ul { padding-left:1.1rem; margin:.35rem 0; }
+    .role { border:1px solid rgba(255,255,255,.12); border-radius:12px; background:rgba(255,255,255,.03); padding:.8rem; margin:.6rem 0; }
+    .small { color:var(--muted); font-size:.92rem; }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background:#fff; color:#111; }
+      .topbar { display:none; }
+      main { width:100%; margin:0; border:none; background:#fff; color:#111; border-radius:0; padding:0; }
+      h2 { color:#0b4a70; }
+      p, li, .small, .meta { color:#111; }
+      .role { border:1px solid #ddd; background:#fff; }
+      a { color:#0b4a70; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="btn" href="/">← Back to Portfolio</a>
+      <div>
+        <button class="btn primary" onclick="window.print()">Print / Save as PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1>Pranit Narendra Muttha</h1>
+    <p class="meta">Data Scientist · AI Engineer · Web Developer · Koblenz, Germany</p>
+    <p>
+      Email: <a href="mailto:mutthapranit@gmail.com">mutthapranit@gmail.com</a> ·
+      Phone: <a href="tel:+4917668386973">+49 17668386973</a> ·
+      LinkedIn: <a href="https://linkedin.com/in/pranit-muttha" target="_blank" rel="noreferrer">linkedin.com/in/pranit-muttha</a> ·
+      GitHub: <a href="https://github.com/PranitMuttha" target="_blank" rel="noreferrer">github.com/PranitMuttha</a>
+    </p>
+
+    <h2>Summary</h2>
+    <p>
+      Data-driven engineer with practical experience in analytics, machine learning, and SaaS product execution. Strong at converting business requirements into measurable dashboards, models, and web solutions.
+    </p>
+
+    <h2>Education</h2>
+    <div class="role">
+      <strong>MS Web and Data Science</strong> — University of Koblenz, Germany
+      <div class="small">2025 – 2027</div>
+    </div>
+    <div class="role">
+      <strong>B.E. Artificial Intelligence & Data Science</strong> — Savitribai Phule Pune University
+      <div class="small">CGPA: 9.05 · 2020 – 2024</div>
+    </div>
+
+    <h2>Experience</h2>
+    <div class="role">
+      <strong>E-commerce Manager (Data Analysis)</strong> — MutthaSales
+      <div class="small">Aug 2024 – Present</div>
+      <ul>
+        <li>Built KPI dashboards and operational reporting for business stakeholders.</li>
+        <li>Drove SKU-level growth through listing and performance optimization.</li>
+        <li>Built and maintained enterprise SaaS operations platform.</li>
+      </ul>
+    </div>
+    <div class="role">
+      <strong>Data Science Intern</strong> — Oasis Infobyte
+      <div class="small">Apr 2023 – May 2023</div>
+      <ul>
+        <li>Developed ML mini-projects in classification, regression, and analysis.</li>
+      </ul>
+    </div>
+
+    <h2>Projects</h2>
+    <ul>
+      <li><strong>MutthaSales Enterprise Platform:</strong> Live SaaS for operations and KPI workflows.</li>
+      <li><strong>Drowsiness Detection System:</strong> OpenCV + Raspberry Pi real-time fatigue alert prototype.</li>
+      <li><strong>Food Demand Forecasting Dashboard:</strong> Tableau-driven planning insights.</li>
+      <li><strong>Smart Car Parking System:</strong> Computer-vision based occupancy detection.</li>
+    </ul>
+
+    <h2>Skills</h2>
+    <div class="grid">
+      <div>
+        <p><strong>Programming:</strong> Python, SQL, C/C++</p>
+        <p><strong>ML/Data:</strong> Scikit-learn, EDA, CV, Regression, Classification</p>
+      </div>
+      <div>
+        <p><strong>Analytics:</strong> Tableau, Excel, KPI Dashboards</p>
+        <p><strong>Product:</strong> SaaS workflows, stakeholder reporting, e-commerce analytics</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

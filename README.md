@@ -6,8 +6,10 @@ A premium animated professional portfolio with a main page, project case-study p
 
 - `pranit-portfolio.html` — complete responsive website with advanced animations
 - `projects/*.html` — detailed project case-study pages
+- `assets/projects/*.svg` — lightweight visual gallery assets for project pages
 - `404.html` — custom not-found page
 - `Pranit-Muttha-Resume.txt` — downloadable resume snapshot
+- `resume.html` — print-friendly resume page (use browser Print to save PDF)
 - `favicon.svg` — brand favicon
 - `og-image.svg` — social preview image
 - `sitemap.xml` — SEO sitemap for search engines
@@ -24,6 +26,7 @@ Then open:
 
 - `http://localhost:8080/pranit-portfolio.html`
 - `http://localhost:8080/projects/mutthasales-enterprise-platform.html`
+- `http://localhost:8080/resume.html`
 - `http://localhost:8080/404.html`
 
 ## Customize quickly
@@ -32,6 +35,8 @@ Then open:
 - Replace project cards in the `#projects` section.
 - Update case studies in the `#case-studies` section with fresh measurable outcomes.
 - Update dedicated project pages inside `projects/`.
+- Replace placeholder SVG gallery visuals under `assets/projects/` with real screenshots when available.
+- Open `resume.html` and use "Print / Save as PDF" for your latest shareable PDF.
 - Tune animations inside the bottom `<script>` block.
 - Edit colors in `:root` CSS variables.
 - Replace `G-XXXXXXXXXX` with your real GA4 measurement ID.

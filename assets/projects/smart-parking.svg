@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0a1021"/>
+  <text x="70" y="90" fill="#edf2ff" font-size="42" font-family="Arial, sans-serif" font-weight="700">Smart Parking Occupancy Detection</text>
+  <rect x="70" y="128" width="1140" height="1" fill="#2f3b5e"/>
+  <rect x="90" y="170" width="1100" height="470" rx="18" fill="#101b34"/>
+  <g stroke="#2f3b5e" stroke-width="4">
+    <line x1="170" y1="220" x2="170" y2="600"/>
+    <line x1="290" y1="220" x2="290" y2="600"/>
+    <line x1="410" y1="220" x2="410" y2="600"/>
+    <line x1="530" y1="220" x2="530" y2="600"/>
+    <line x1="650" y1="220" x2="650" y2="600"/>
+    <line x1="770" y1="220" x2="770" y2="600"/>
+    <line x1="890" y1="220" x2="890" y2="600"/>
+    <line x1="1010" y1="220" x2="1010" y2="600"/>
+  </g>
+  <g>
+    <rect x="120" y="260" width="70" height="120" rx="10" fill="#67f0a8"/>
+    <rect x="360" y="420" width="70" height="120" rx="10" fill="#ff7a9e"/>
+    <rect x="600" y="260" width="70" height="120" rx="10" fill="#67f0a8"/>
+    <rect x="840" y="420" width="70" height="120" rx="10" fill="#ff7a9e"/>
+    <rect x="1080" y="260" width="70" height="120" rx="10" fill="#67f0a8"/>
+  </g>
+  <text x="96" y="620" fill="#67f0a8" font-size="22" font-family="Arial, sans-serif">Green = Available</text>
+  <text x="320" y="620" fill="#ff7a9e" font-size="22" font-family="Arial, sans-serif">Pink = Occupied</text>
+</svg>

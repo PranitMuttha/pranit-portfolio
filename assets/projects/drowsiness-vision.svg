@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0a1021"/>
+  <rect x="70" y="70" width="1140" height="580" rx="22" fill="#101b34" stroke="#2f3b5e"/>
+  <text x="100" y="130" fill="#edf2ff" font-size="38" font-family="Arial, sans-serif" font-weight="700">Drowsiness Detection Feed</text>
+  <rect x="110" y="170" width="760" height="430" rx="16" fill="#0d1427" stroke="#5ce1ff" opacity="0.85"/>
+  <rect x="900" y="170" width="270" height="430" rx="16" fill="#15213f"/>
+  <ellipse cx="490" cy="385" rx="230" ry="170" fill="none" stroke="#5ce1ff" stroke-width="4" opacity="0.7"/>
+  <circle cx="425" cy="355" r="18" fill="none" stroke="#a78bfa" stroke-width="4"/>
+  <circle cx="555" cy="355" r="18" fill="none" stroke="#a78bfa" stroke-width="4"/>
+  <path d="M430 452 Q 490 495 550 452" stroke="#ffd166" stroke-width="5" fill="none"/>
+  <text x="928" y="230" fill="#edf2ff" font-size="24" font-family="Arial, sans-serif">Status</text>
+  <text x="928" y="280" fill="#67f0a8" font-size="22" font-family="Arial, sans-serif">Eyes Open: YES</text>
+  <text x="928" y="320" fill="#67f0a8" font-size="22" font-family="Arial, sans-serif">Alert: OFF</text>
+  <text x="928" y="360" fill="#9aabcf" font-size="18" font-family="Arial, sans-serif">FPS: 23.8</text>
+</svg>

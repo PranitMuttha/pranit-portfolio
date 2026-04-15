@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0b1226"/>
+  <text x="70" y="90" fill="#edf2ff" font-size="42" font-family="Arial, sans-serif" font-weight="700">Internship ML Case Studies</text>
+  <rect x="70" y="128" width="1140" height="1" fill="#2f3b5e"/>
+  <rect x="70" y="170" width="360" height="480" rx="16" fill="#15213f"/>
+  <rect x="460" y="170" width="360" height="480" rx="16" fill="#15213f"/>
+  <rect x="850" y="170" width="360" height="480" rx="16" fill="#15213f"/>
+  <text x="104" y="220" fill="#5ce1ff" font-size="24" font-family="Arial, sans-serif">Classification</text>
+  <text x="494" y="220" fill="#5ce1ff" font-size="24" font-family="Arial, sans-serif">Visualization</text>
+  <text x="884" y="220" fill="#5ce1ff" font-size="24" font-family="Arial, sans-serif">Regression</text>
+  <circle cx="250" cy="400" r="90" fill="none" stroke="#a78bfa" stroke-width="6"/>
+  <line x1="160" y1="490" x2="340" y2="310" stroke="#5ce1ff" stroke-width="5"/>
+  <polyline points="500,520 560,470 620,495 680,430 740,420 790,380" fill="none" stroke="#5ce1ff" stroke-width="6"/>
+  <polyline points="900,530 980,500 1060,470 1140,435" fill="none" stroke="#ffd166" stroke-width="6"/>
+</svg>

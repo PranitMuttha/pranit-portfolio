@@ -418,6 +418,8 @@
     .section {
       padding: 5.8rem 0;
       position: relative;
+      content-visibility: auto;
+      contain-intrinsic-size: 800px;
     }
 
     .section-head {
@@ -984,6 +986,21 @@
         justify-content: center;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      canvas#bg-particles {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1017,7 +1034,7 @@
         <div class="cta-row">
           <a class="btn btn-primary" href="#projects">View my work →</a>
           <a class="btn btn-ghost" href="#contact">Let's collaborate</a>
-          <a class="btn btn-ghost" href="/Pranit-Muttha-Resume.txt" download>Download Resume</a>
+          <a class="btn btn-ghost" href="/resume.html" target="_blank" rel="noreferrer">View Resume</a>
         </div>
         <div class="hero-chips">
           <span class="chip">Koblenz, Germany</span>
@@ -1349,7 +1366,7 @@
             <a href="tel:+4917668386973">📱 +49 17668386973</a>
             <a href="https://linkedin.com/in/pranit-muttha" target="_blank" rel="noreferrer">💼 LinkedIn Profile</a>
             <a href="https://app.mutthasales.in" target="_blank" rel="noreferrer">🚀 Live Product: app.mutthasales.in</a>
-            <a href="/Pranit-Muttha-Resume.txt" download>📄 Download Resume</a>
+            <a href="/resume.html" target="_blank" rel="noreferrer">📄 View Printable Resume</a>
           </div>
         </article>
 
@@ -1383,7 +1400,7 @@
   <aside class="sticky-cta" aria-label="Primary portfolio actions">
     <a class="primary" href="#contact" data-track="Hire Me">Hire Me</a>
     <a href="https://linkedin.com/in/pranit-muttha" target="_blank" rel="noreferrer" data-track="Book Call">Book a Call</a>
-    <a href="/Pranit-Muttha-Resume.txt" download data-track="Resume">Resume</a>
+    <a href="/resume.html" target="_blank" rel="noreferrer" data-track="Resume">Resume</a>
   </aside>
 
   <footer>
@@ -1578,6 +1595,7 @@
     const canvas = document.getElementById('bg-particles');
     const context = canvas.getContext('2d');
     let particles = [];
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function resizeCanvas() {
       canvas.width = window.innerWidth;
@@ -1625,9 +1643,13 @@
       requestAnimationFrame(animateParticles);
     }
 
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    animateParticles();
+    if (!reducedMotion) {
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+      animateParticles();
+    } else {
+      canvas.style.display = 'none';
+    }
   </script>
 </body>
 </html>
