@@ -18,6 +18,8 @@
   <meta name="twitter:image" content="https://pranitmuttha.com/og-image.svg" />
   <link rel="canonical" href="https://pranitmuttha.com/" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="apple-mobile-web-app-title" content="Pranit Portfolio" />
   <title>Pranit Narendra Muttha — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -69,6 +71,28 @@
 
     html {
       scroll-behavior: smooth;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 10px;
+      z-index: 300;
+      background: #ffffff;
+      color: #051426;
+      padding: 0.6rem 0.8rem;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      left: 10px;
     }
 
     body {
@@ -1004,6 +1028,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#home">Skip to main content</a>
   <div class="progress" id="progress"></div>
   <canvas id="bg-particles" aria-hidden="true"></canvas>
 

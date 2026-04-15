@@ -12,8 +12,10 @@ A premium animated professional portfolio with a main page, project case-study p
 - `resume.html` — print-friendly resume page (use browser Print to save PDF)
 - `favicon.svg` — brand favicon
 - `og-image.svg` — social preview image
+- `site.webmanifest` — web app metadata for browser integration
 - `sitemap.xml` — SEO sitemap for search engines
 - `robots.txt` — crawling directives + sitemap location
+- `netlify.toml` — Netlify redirects, headers, and custom 404 routing
 
 ## Run locally
 
