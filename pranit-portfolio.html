@@ -4,10 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Pranit Narendra Muttha — Data Scientist, AI Engineer, and Web Developer portfolio." />
+  <meta name="keywords" content="Pranit Muttha, Data Scientist, AI Engineer, Web Developer, Portfolio, Machine Learning, Tableau, Python" />
+  <meta name="author" content="Pranit Narendra Muttha" />
+  <meta name="theme-color" content="#070b16" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Pranit Narendra Muttha — Data Scientist Portfolio" />
+  <meta property="og:description" content="Data Scientist and AI Engineer building production-grade analytics and SaaS systems." />
+  <meta property="og:url" content="https://pranitmuttha.com/" />
+  <meta property="og:image" content="https://pranitmuttha.com/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pranit Narendra Muttha — Data Scientist Portfolio" />
+  <meta name="twitter:description" content="AI, analytics, and full-stack product engineering portfolio." />
+  <meta name="twitter:image" content="https://pranitmuttha.com/og-image.svg" />
+  <link rel="canonical" href="https://pranitmuttha.com/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>Pranit Narendra Muttha — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Pranit Narendra Muttha",
+      "url": "https://pranitmuttha.com/",
+      "jobTitle": "Data Scientist and AI Engineer",
+      "sameAs": [
+        "https://linkedin.com/in/pranit-muttha",
+        "https://github.com/PranitMuttha"
+      ],
+      "knowsAbout": ["Data Science", "Machine Learning", "Business Analytics", "SaaS Engineering", "Tableau", "Python"]
+    }
+  </script>
   <style>
     :root {
       --bg: #070b16;
@@ -626,6 +661,45 @@
       gap: 0.65rem;
     }
 
+    .case-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 0.8rem;
+    }
+
+    .case-card {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      padding: 1rem;
+      background: var(--surface);
+      transition: all 0.25s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(92, 225, 255, 0.35);
+      background: var(--surface-2);
+    }
+
+    .case-metric {
+      font-family: 'Syne', sans-serif;
+      color: var(--primary);
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .case-card h3 {
+      font-size: 1.04rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .case-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     .timeline {
       display: grid;
       gap: 0.95rem;
@@ -793,6 +867,50 @@
       margin-top: 0.35rem;
     }
 
+    .form-status {
+      font-size: 0.84rem;
+      color: var(--ok);
+      min-height: 1.2rem;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 160;
+      border: 1px solid rgba(92, 225, 255, 0.35);
+      background: rgba(7, 11, 22, 0.86);
+      backdrop-filter: blur(10px);
+      border-radius: 14px;
+      padding: 0.7rem;
+      display: flex;
+      gap: 0.55rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .sticky-cta a {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: var(--text);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .sticky-cta a.primary {
+      background: linear-gradient(120deg, var(--primary), #9cefff);
+      color: #051426;
+      border-color: transparent;
+    }
+
+    .sticky-cta a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(92, 225, 255, 0.45);
+    }
+
     footer {
       margin-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -858,6 +976,13 @@
       .skills-grid {
         grid-template-columns: 1fr;
       }
+
+      .sticky-cta {
+        left: 0.7rem;
+        right: 0.7rem;
+        bottom: 0.75rem;
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -873,6 +998,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#case-studies">Case Studies</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -891,6 +1017,7 @@
         <div class="cta-row">
           <a class="btn btn-primary" href="#projects">View my work →</a>
           <a class="btn btn-ghost" href="#contact">Let's collaborate</a>
+          <a class="btn btn-ghost" href="/Pranit-Muttha-Resume.txt" download>Download Resume</a>
         </div>
         <div class="hero-chips">
           <span class="chip">Koblenz, Germany</span>
@@ -1044,6 +1171,7 @@
             <span class="tag">Analytics</span>
             <span class="tag">Operations</span>
           </div>
+          <a href="/projects/mutthasales-enterprise-platform.html">Read Case Study →</a>
           <a href="https://app.mutthasales.in" target="_blank" rel="noreferrer">Visit Live Product →</a>
         </article>
 
@@ -1052,6 +1180,7 @@
           <h3>Drowsiness Detection System</h3>
           <p>Built a real-time safety system using Python, OpenCV, and Raspberry Pi to detect fatigue patterns and trigger preventive alerts.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Raspberry Pi</span><span class="tag">Real-time</span></div>
+          <a href="/projects/drowsiness-detection-system.html">Read Case Study →</a>
         </article>
 
         <article class="project" data-reveal>
@@ -1059,6 +1188,7 @@
           <h3>Food Demand Forecasting Dashboard</h3>
           <p>Designed Tableau dashboards for demand prediction and planning decisions, improving procurement and fulfillment strategy.</p>
           <div class="tags"><span class="tag">Tableau</span><span class="tag">Forecasting</span><span class="tag">Data Viz</span><span class="tag">Supply Chain</span></div>
+          <a href="/projects/food-demand-forecasting-dashboard.html">Read Case Study →</a>
         </article>
 
         <article class="project" data-reveal>
@@ -1066,6 +1196,7 @@
           <h3>Internship ML Case Studies</h3>
           <p>Built and evaluated practical ML pipelines including iris classification, unemployment insights, and sales prediction models.</p>
           <div class="tags"><span class="tag">Scikit-learn</span><span class="tag">Regression</span><span class="tag">Classification</span><span class="tag">EDA</span></div>
+          <a href="/projects/internship-ml-case-studies.html">Read Case Study →</a>
         </article>
 
         <article class="project" data-reveal>
@@ -1073,6 +1204,7 @@
           <h3>Smart Car Parking System</h3>
           <p>Implemented image-processing based parking-slot detection to monitor availability and support real-time smart parking decisions.</p>
           <div class="tags"><span class="tag">Image Processing</span><span class="tag">Python</span><span class="tag">CV</span><span class="tag">Team Lead</span></div>
+          <a href="/projects/smart-car-parking-system.html">Read Case Study →</a>
         </article>
       </div>
     </div>
@@ -1117,6 +1249,38 @@
             <li>Delivered machine-learning mini projects on classification, regression, and analytics.</li>
             <li>Converted raw data into executive-ready visual and numerical insights.</li>
           </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="case-studies" class="section">
+    <div class="container" data-reveal>
+      <div class="section-head">
+        <div>
+          <p class="label">Case Studies</p>
+          <h2>Measured <span>Business Outcomes</span></h2>
+        </div>
+        <p class="subtitle">Focused examples showing impact, not only implementation details.</p>
+      </div>
+
+      <div class="case-grid">
+        <article class="case-card" data-reveal>
+          <p class="case-metric">₹30K+</p>
+          <h3>SKU Revenue Lift in 3 Months</h3>
+          <p>Optimized listing strategy and channel KPIs for a priority FMCG SKU, resulting in measurable organic sales growth.</p>
+        </article>
+
+        <article class="case-card" data-reveal>
+          <p class="case-metric">100%</p>
+          <h3>Ops Visibility Across Teams</h3>
+          <p>Built operational dashboards and workflows in a live SaaS product to align inventory, sales, and management decisions.</p>
+        </article>
+
+        <article class="case-card" data-reveal>
+          <p class="case-metric">Real-time</p>
+          <h3>Driver Safety Alert Prototype</h3>
+          <p>Led a computer-vision system for drowsiness detection using OpenCV and Raspberry Pi, designed for immediate alerting.</p>
         </article>
       </div>
     </div>
@@ -1185,23 +1349,42 @@
             <a href="tel:+4917668386973">📱 +49 17668386973</a>
             <a href="https://linkedin.com/in/pranit-muttha" target="_blank" rel="noreferrer">💼 LinkedIn Profile</a>
             <a href="https://app.mutthasales.in" target="_blank" rel="noreferrer">🚀 Live Product: app.mutthasales.in</a>
+            <a href="/Pranit-Muttha-Resume.txt" download>📄 Download Resume</a>
           </div>
         </article>
 
         <article class="contact-box" data-reveal>
           <h3>Quick Message</h3>
-          <p>This form opens your email client with prefilled details.</p>
-          <form id="contactForm">
-            <input type="text" id="name" placeholder="Your name" required />
-            <input type="email" id="email" placeholder="Your email" required />
-            <textarea id="message" placeholder="Tell me about your project or role" required></textarea>
+          <p>Send directly from the website. I usually respond within 24 hours.</p>
+          <form id="contactForm" name="portfolio-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="portfolio-contact" />
+            <p style="display:none;">
+              <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+            </p>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+            <input type="email" id="email" name="email" placeholder="Your email" required />
+            <textarea id="message" name="message" placeholder="Tell me about your project or role" required></textarea>
             <button class="btn btn-primary" type="submit">Send message</button>
+            <p class="form-status" id="formStatus"></p>
           </form>
           <p class="tiny">Preferred timezone: CET / IST overlap friendly.</p>
         </article>
       </div>
     </div>
   </section>
+
+  <form name="portfolio-contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <textarea name="message"></textarea>
+    <input name="bot-field" />
+  </form>
+
+  <aside class="sticky-cta" aria-label="Primary portfolio actions">
+    <a class="primary" href="#contact" data-track="Hire Me">Hire Me</a>
+    <a href="https://linkedin.com/in/pranit-muttha" target="_blank" rel="noreferrer" data-track="Book Call">Book a Call</a>
+    <a href="/Pranit-Muttha-Resume.txt" download data-track="Resume">Resume</a>
+  </aside>
 
   <footer>
     <p>© <span id="year"></span> Pranit Narendra Muttha · Crafted with ambition and precision.</p>
@@ -1215,6 +1398,7 @@
     const revealItems = document.querySelectorAll('[data-reveal]');
     const year = document.getElementById('year');
     const typeRole = document.getElementById('typeRole');
+    const formStatus = document.getElementById('formStatus');
 
     year.textContent = new Date().getFullYear();
 
@@ -1354,15 +1538,41 @@
 
     const contactForm = document.getElementById('contactForm');
 
-    contactForm.addEventListener('submit', (event) => {
+    contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
 
-      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-      window.location.href = `mailto:mutthapranit@gmail.com?subject=${subject}&body=${body}`;
+      const formData = new URLSearchParams();
+      formData.append('form-name', 'portfolio-contact');
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('message', message);
+
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: formData.toString()
+        });
+        if (!response.ok) {
+          throw new Error('submit failed');
+        }
+        formStatus.textContent = 'Message sent successfully. I will get back soon.';
+        contactForm.reset();
+        gtag('event', 'contact_form_submit', { method: 'netlify_form' });
+      } catch (error) {
+        formStatus.textContent = 'Submission failed. Please email me directly at mutthapranit@gmail.com.';
+      }
+    });
+
+    document.querySelectorAll('[data-track]').forEach((element) => {
+      element.addEventListener('click', () => {
+        gtag('event', 'portfolio_cta_click', {
+          cta_name: element.dataset.track
+        });
+      });
     });
 
     const canvas = document.getElementById('bg-particles');
