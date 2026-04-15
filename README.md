@@ -51,13 +51,22 @@ Use these scripts before production launch:
 ```bash
 cd "/Users/pranit/Downloads/pranit porfolio"
 ./scripts/update-domain.sh yourdomain.com
+./scripts/update-ga.sh G-ABC123XYZ
 ./scripts/preflight.sh
 ```
 
 What they do:
 
 - `update-domain.sh` updates domain references in key files.
+- `update-ga.sh` updates your GA4 measurement ID in `pranit-portfolio.html`.
 - `preflight.sh` fails if placeholder values still exist or required files are missing.
+
+One-command preparation:
+
+```bash
+cd "/Users/pranit/Downloads/pranit porfolio"
+./scripts/prepare-launch.sh yourdomain.com G-ABC123XYZ
+```
 
 ## Deploy flow (GitHub + Netlify auto deploy)
 
