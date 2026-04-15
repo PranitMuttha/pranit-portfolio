@@ -43,3 +43,27 @@ Then open:
 - Edit colors in `:root` CSS variables.
 - Replace `G-XXXXXXXXXX` with your real GA4 measurement ID.
 - Replace `https://pranitmuttha.com/` in canonical, OpenGraph, `sitemap.xml`, and `robots.txt` with your final domain.
+
+## Launch automation
+
+Use these scripts before production launch:
+
+```bash
+cd "/Users/pranit/Downloads/pranit porfolio"
+./scripts/update-domain.sh yourdomain.com
+./scripts/preflight.sh
+```
+
+What they do:
+
+- `update-domain.sh` updates domain references in key files.
+- `preflight.sh` fails if placeholder values still exist or required files are missing.
+
+## Deploy flow (GitHub + Netlify auto deploy)
+
+```bash
+cd "/Users/pranit/Downloads/pranit porfolio"
+git add .
+git commit -m "launch updates"
+git push
+```
