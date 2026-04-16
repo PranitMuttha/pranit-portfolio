@@ -754,69 +754,6 @@
       font-size: 0.9rem;
     }
 
-    .github-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-
-    .github-card {
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 16px;
-      background: var(--surface);
-      overflow: hidden;
-      transition: all 0.24s ease;
-    }
-
-    .github-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(92, 225, 255, 0.35);
-      background: var(--surface-2);
-    }
-
-    .github-shot {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .github-content {
-      padding: 0.95rem;
-    }
-
-    .github-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .github-meta h3 {
-      font-size: 1.02rem;
-    }
-
-    .star {
-      color: var(--accent);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.74rem;
-    }
-
-    .github-content p {
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin-bottom: 0.65rem;
-    }
-
-    .github-content a {
-      color: var(--primary);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-
     .timeline {
       display: grid;
       gap: 0.95rem;
@@ -1141,7 +1078,6 @@
         <li><a href="#skills" data-i18n="navSkills">Skills</a></li>
         <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
         <li><a href="#case-studies" data-i18n="navCaseStudies">Case Studies</a></li>
-        <li><a href="#github-highlights" data-i18n="navGithub">GitHub</a></li>
         <li><a href="#experience" data-i18n="navExperience">Experience</a></li>
         <li><a href="#contact" data-i18n="navContact">Contact</a></li>
       </ul>
@@ -1214,69 +1150,6 @@
 
   <section id="about" class="section">
     <div class="container" data-reveal>
-      <div class="section-head">
-        <div>
-          <p class="label">About</p>
-          <h2>Professional <span>Profile</span></h2>
-        </div>
-      </div>
-      <div class="about-grid">
-        <article class="panel">
-          <div class="about-text">
-            <p>
-              I'm <strong>Pranit Narendra Muttha</strong>, a data-driven engineer from Pune, now based in Germany. I enjoy turning messy real-world data into reliable systems and products.
-            </p>
-            <p>
-              I completed my B.E. in Artificial Intelligence & Data Science with a <strong>9.05 CGPA</strong> and now pursue advanced studies in web and data science, while building practical business software.
-            </p>
-            <p>
-              My work spans machine learning, business analytics, computer vision, e-commerce optimization, and full-stack product delivery.
-            </p>
-          </div>
-        </article>
-
-        <article class="panel">
-          <p class="mini-title">Personal Info</p>
-          <div class="detail-grid">
-            <div class="detail"><span class="k">Email</span><span class="v"><a href="mailto:mutthapranit@gmail.com">mutthapranit@gmail.com</a></span></div>
-            <div class="detail"><span class="k">Phone</span><span class="v"><a href="tel:+4917668386973">+49 17668386973</a></span></div>
-            <div class="detail"><span class="k">Location</span><span class="v">Koblenz, Germany</span></div>
-            <div class="detail"><span class="k">LinkedIn</span><span class="v"><a href="https://linkedin.com/in/pranit-muttha" target="_blank" rel="noreferrer">linkedin.com/in/pranit-muttha</a></span></div>
-            <div class="detail"><span class="k">Languages</span><span class="v">English, Hindi, Marathi, German (A1 learning)</span></div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="section">
-    <div class="container" data-reveal>
-      <div class="section-head">
-        <div>
-          <p class="label">Skills</p>
-          <h2>Technical <span>Strengths</span></h2>
-        </div>
-        <p class="subtitle">Balanced across AI, analytics, and product engineering to deliver business outcomes, not just prototypes.</p>
-      </div>
-
-      <div class="skills-grid">
-        <article class="skill-card" data-reveal>
-          <h3>Programming & Data</h3>
-          <div class="meter"><div class="meter-top"><span>Python</span><span>92%</span></div><div class="meter-track"><div class="meter-fill" data-level="92"></div></div></div>
-          <div class="meter"><div class="meter-top"><span>SQL</span><span>88%</span></div><div class="meter-track"><div class="meter-fill" data-level="88"></div></div></div>
-          <div class="meter"><div class="meter-top"><span>C / C++</span><span>75%</span></div><div class="meter-track"><div class="meter-fill" data-level="75"></div></div></div>
-        </article>
-
-        <article class="skill-card" data-reveal>
-          <h3>AI & Machine Learning</h3>
-          <div class="meter"><div class="meter-top"><span>Model Building</span><span>86%</span></div><div class="meter-track"><div class="meter-fill" data-level="86"></div></div></div>
-          <div class="meter"><div class="meter-top"><span>Computer Vision</span><span>82%</span></div><div class="meter-track"><div class="meter-fill" data-level="82"></div></div></div>
-          <div class="meter"><div class="meter-top"><span>Scikit-learn</span><span>84%</span></div><div class="meter-track"><div class="meter-fill" data-level="84"></div></div></div>
-        </article>
-
-        <article class="skill-card" data-reveal>
-          <h3>Visualization & BI</h3>
-          <div class="meter"><div class="meter-top"><span>Tableau</span><span>90%</span></div><div class="meter-track"><div class="meter-fill" data-level="90"></div></div></div>
           <div class="meter"><div class="meter-top"><span>Excel / Dashboarding</span><span>91%</span></div><div class="meter-track"><div class="meter-fill" data-level="91"></div></div></div>
           <div class="meter"><div class="meter-top"><span>KPI Analytics</span><span>89%</span></div><div class="meter-track"><div class="meter-fill" data-level="89"></div></div></div>
         </article>
@@ -1429,56 +1302,6 @@
     </div>
   </section>
 
-  <section id="github-highlights" class="section">
-    <div class="container" data-reveal>
-      <div class="section-head">
-        <div>
-          <p class="label" data-i18n="githubLabel">GitHub Highlights</p>
-          <h2 data-i18n="githubTitle">Pinned <span>Repository Work</span></h2>
-        </div>
-        <p class="subtitle" data-i18n="githubSubtitle">Selected repos with README previews and concise build notes.</p>
-      </div>
-
-      <div class="github-grid">
-        <article class="github-card" data-reveal>
-          <img class="github-shot" src="/assets/github/pranit-portfolio-readme.svg" alt="README screenshot preview for pranit-portfolio repository" loading="lazy" decoding="async" width="1200" height="675" />
-          <div class="github-content">
-            <div class="github-meta">
-              <h3>pranit-portfolio</h3>
-              <span class="star">★ 0</span>
-            </div>
-            <p data-i18n="repoPortfolioNote">What I built: production-ready portfolio with SEO, localization, launch automation scripts, and Netlify deployment flow.</p>
-            <a href="https://github.com/PranitMuttha/pranit-portfolio" target="_blank" rel="noreferrer" data-i18n="repoView">View Repository →</a>
-          </div>
-        </article>
-
-        <article class="github-card" data-reveal>
-          <img class="github-shot" src="/assets/github/muttha-frontend-readme.svg" alt="README screenshot preview for muttha-frontend repository" loading="lazy" decoding="async" width="1200" height="675" />
-          <div class="github-content">
-            <div class="github-meta">
-              <h3>muttha-frontend</h3>
-              <span class="star">★ 0</span>
-            </div>
-            <p data-i18n="repoFrontendNote">What I built: frontend modules for dashboard UX, role-based workflows, and business-facing interfaces.</p>
-            <a href="https://github.com/PranitMuttha/muttha-frontend" target="_blank" rel="noreferrer" data-i18n="repoView">View Repository →</a>
-          </div>
-        </article>
-
-        <article class="github-card" data-reveal>
-          <img class="github-shot" src="/assets/github/muttha-backend-readme.svg" alt="README screenshot preview for muttha-sales-backend repository" loading="lazy" decoding="async" width="1200" height="675" />
-          <div class="github-content">
-            <div class="github-meta">
-              <h3>muttha-sales-backend</h3>
-              <span class="star">★ 0</span>
-            </div>
-            <p data-i18n="repoBackendNote">What I built: backend services for auth, APIs, and data integration supporting operations and analytics use cases.</p>
-            <a href="https://github.com/PranitMuttha/muttha-sales-backend" target="_blank" rel="noreferrer" data-i18n="repoView">View Repository →</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container" data-reveal>
       <div class="section-head">
@@ -1597,18 +1420,11 @@
     const i18n = {
       en: {
         skipLink: 'Skip to main content',
-        navAbout: 'About', navSkills: 'Skills', navProjects: 'Projects', navCaseStudies: 'Case Studies', navGithub: 'GitHub', navExperience: 'Experience', navContact: 'Contact',
+        navAbout: 'About', navSkills: 'Skills', navProjects: 'Projects', navCaseStudies: 'Case Studies', navExperience: 'Experience', navContact: 'Contact',
         heroTag: 'Open to internships & full-time roles',
         heroRolePrefix: 'I build as a',
         heroText: 'I design intelligent products that connect data, AI, and user-focused web experiences. Currently pursuing an MS in Web & Data Science at University of Koblenz, while building real-world SaaS systems and analytics solutions.',
         heroBtnWork: 'View my work →', heroBtnCollab: "Let's collaborate", heroBtnResume: 'View Resume',
-        githubLabel: 'GitHub Highlights',
-        githubTitle: 'Pinned Repository Work',
-        githubSubtitle: 'Selected repos with README previews and concise build notes.',
-        repoPortfolioNote: 'What I built: production-ready portfolio with SEO, localization, launch automation scripts, and Netlify deployment flow.',
-        repoFrontendNote: 'What I built: frontend modules for dashboard UX, role-based workflows, and business-facing interfaces.',
-        repoBackendNote: 'What I built: backend services for auth, APIs, and data integration supporting operations and analytics use cases.',
-        repoView: 'View Repository →',
         contactLabel: 'Contact',
         contactTitle: "Let's Build Something Great",
         directLinksTitle: 'Direct Links',
@@ -1625,18 +1441,11 @@
       },
       de: {
         skipLink: 'Zum Hauptinhalt springen',
-        navAbout: 'Über mich', navSkills: 'Fähigkeiten', navProjects: 'Projekte', navCaseStudies: 'Fallstudien', navGithub: 'GitHub', navExperience: 'Erfahrung', navContact: 'Kontakt',
+        navAbout: 'Über mich', navSkills: 'Fähigkeiten', navProjects: 'Projekte', navCaseStudies: 'Fallstudien', navExperience: 'Erfahrung', navContact: 'Kontakt',
         heroTag: 'Offen für Praktika & Festanstellungen',
         heroRolePrefix: 'Ich arbeite als',
         heroText: 'Ich entwickle intelligente Produkte, die Daten, KI und benutzerorientierte Web-Erlebnisse verbinden. Derzeit studiere ich Web & Data Science an der Universität Koblenz und baue praxisnahe SaaS- und Analytics-Lösungen.',
         heroBtnWork: 'Meine Arbeiten ansehen →', heroBtnCollab: 'Zusammenarbeiten', heroBtnResume: 'Lebenslauf ansehen',
-        githubLabel: 'GitHub Highlights',
-        githubTitle: 'Ausgewählte Repository-Arbeiten',
-        githubSubtitle: 'Ausgewählte Repositories mit README-Vorschau und kurzen Entwicklungsnotizen.',
-        repoPortfolioNote: 'Was ich gebaut habe: produktionsreifes Portfolio mit SEO, Lokalisierung, Launch-Automatisierung und Netlify-Deployment.',
-        repoFrontendNote: 'Was ich gebaut habe: Frontend-Module für Dashboard-UX, rollenbasierte Workflows und Business-Interfaces.',
-        repoBackendNote: 'Was ich gebaut habe: Backend-Services für Authentifizierung, APIs und Datenintegration für operative und analytische Anwendungsfälle.',
-        repoView: 'Repository ansehen →',
         contactLabel: 'Kontakt',
         contactTitle: 'Lass uns etwas Großartiges bauen',
         directLinksTitle: 'Direkte Links',
