@@ -13,6 +13,20 @@
     a { color:var(--primary); text-decoration:none; }
     .card { background:var(--surface); border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:1.2rem; margin:1rem 0; }
     .hero-img { width:100%; border-radius:14px; border:1px solid rgba(255,255,255,.16); margin:1rem 0; }
+    .muted { color:var(--muted); }
+    .grid { display:grid; gap:.9rem; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); }
+    .pill-row { display:flex; flex-wrap:wrap; gap:.45rem; margin-top:.45rem; }
+    .pill { font-size:.78rem; padding:.2rem .6rem; border-radius:999px; border:1px solid rgba(92,225,255,.35); background:rgba(92,225,255,.12); color:var(--primary); }
+    .kpi { border:1px solid rgba(255,255,255,.1); border-radius:12px; background:rgba(255,255,255,.03); padding:.85rem; }
+    .kpi h3 { margin:.1rem 0 .2rem; font-size:1.35rem; line-height:1.1; }
+    .kpi p { margin:0; color:var(--muted); font-size:.9rem; }
+    .timeline { margin:0; padding-left:1.2rem; }
+    .timeline li { margin-bottom:.55rem; }
+    .checklist { list-style:none; padding:0; margin:0; }
+    .checklist li { padding-left:1.4rem; position:relative; margin:.4rem 0; }
+    .checklist li::before { content:'✓'; position:absolute; left:0; color:var(--primary); }
+    .split { display:grid; gap:.95rem; grid-template-columns:1fr 1fr; }
+    @media (max-width:760px) { .split { grid-template-columns:1fr; } }
     h1,h2 { line-height:1.2; }
     ul { padding-left:1.2rem; }
   </style>
@@ -21,12 +35,63 @@
   <main class="wrap">
     <p><a href="/">← Back to portfolio</a></p>
     <h1>MutthaSales Enterprise Platform</h1>
-    <p>Role: Product Engineer · Data Analyst · Dashboard Architect</p>
+    <p class="muted">Role: Product Engineer · Data Analyst · Dashboard Architect</p>
+    <div class="pill-row" aria-label="Case study highlights">
+      <span class="pill">B2B/B2C Operations</span>
+      <span class="pill">KPI Intelligence</span>
+      <span class="pill">Role-Based Workflow</span>
+      <span class="pill">Analytics-Driven Decisions</span>
+    </div>
     <img class="hero-img" src="/assets/projects/mutthasales-dashboard.svg" alt="MutthaSales KPI dashboard preview" loading="lazy" decoding="async" width="1280" height="720" />
+
+    <section class="card">
+      <h2>Executive Summary</h2>
+      <p>The MutthaSales platform was designed as an internal growth engine to unify sales, operations, and analytics for faster decision-making. Instead of fragmented spreadsheets and delayed reports, teams get a shared workspace with near real-time visibility into pipeline, order flow, and channel performance.</p>
+    </section>
+
+    <section class="card">
+      <h2>Business Context</h2>
+      <div class="split">
+        <div>
+          <h3>Before Platform</h3>
+          <ul class="checklist">
+            <li>Teams used disconnected tools and manually merged reports.</li>
+            <li>Leadership lacked a single, trusted dashboard for decision cycles.</li>
+            <li>Weekly reviews were delayed by data cleanup and reconciliation.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>After Platform Direction</h3>
+          <ul class="checklist">
+            <li>Centralized analytics and operational workflows in one product.</li>
+            <li>Role-based visibility for managers, analysts, and operations.</li>
+            <li>Standard KPI definitions to reduce reporting ambiguity.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <section class="card">
       <h2>Problem</h2>
       <p>Business operations and channel metrics were spread across multiple tools, creating delayed decisions and inconsistent reporting.</p>
+    </section>
+
+    <section class="card">
+      <h2>Objectives & Success Criteria</h2>
+      <div class="grid">
+        <article class="kpi">
+          <h3>1 Source</h3>
+          <p>Build one reliable source of truth for commercial and operational metrics.</p>
+        </article>
+        <article class="kpi">
+          <h3>Faster Reviews</h3>
+          <p>Reduce weekly reporting preparation overhead through built-in dashboards.</p>
+        </article>
+        <article class="kpi">
+          <h3>Role Clarity</h3>
+          <p>Give each function targeted views to act without cross-team dependencies.</p>
+        </article>
+      </div>
     </section>
 
     <section class="card">
@@ -35,7 +100,29 @@
         <li>Designed a unified SaaS workflow for teams and leadership.</li>
         <li>Built KPI dashboards and reporting modules for operational clarity.</li>
         <li>Structured data views for e-commerce and distribution actions.</li>
+        <li>Defined metric governance (naming, formulas, cadence) for consistency.</li>
+        <li>Prioritized mobile-friendly navigation for on-ground business stakeholders.</li>
       </ul>
+    </section>
+
+    <section class="card">
+      <h2>Platform Architecture (High-Level)</h2>
+      <ul>
+        <li><strong>Ingestion Layer:</strong> Consolidates transactions and channel updates into a normalized reporting model.</li>
+        <li><strong>Business Logic Layer:</strong> Applies KPI formulas, status tagging, and role-based filtering.</li>
+        <li><strong>Presentation Layer:</strong> Delivers operational dashboards, trend snapshots, and drill-down reporting.</li>
+        <li><strong>Action Layer:</strong> Enables follow-up workflows from insights (e.g., review, correction, escalation).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Delivery Timeline</h2>
+      <ol class="timeline">
+        <li><strong>Discovery:</strong> Mapped reporting pain points and decision bottlenecks across teams.</li>
+        <li><strong>MVP Definition:</strong> Prioritized essential dashboards and role-level workflows.</li>
+        <li><strong>Build & Validate:</strong> Implemented core modules and validated KPI parity with legacy reports.</li>
+        <li><strong>Adoption:</strong> Structured team onboarding and iterative refinement from stakeholder feedback.</li>
+      </ol>
     </section>
 
     <section class="card">
@@ -44,13 +131,67 @@
         <li>Created a single source of truth for business performance.</li>
         <li>Improved operational visibility across roles and departments.</li>
         <li>Enabled faster decisions through centralized KPI monitoring.</li>
+        <li>Reduced ambiguity in business reviews with standardized KPI definitions.</li>
+        <li>Improved accountability with role-specific access and ownership views.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Key Challenges & How I Solved Them</h2>
+      <div class="split">
+        <div>
+          <h3>Data Consistency</h3>
+          <p>Different teams interpreted the same metric differently. I introduced shared KPI definitions and formula alignment checkpoints before release.</p>
+        </div>
+        <div>
+          <h3>Stakeholder Adoption</h3>
+          <p>Users initially relied on legacy sheets. I used phased onboarding and familiar dashboard patterns to reduce switching friction.</p>
+        </div>
+        <div>
+          <h3>Cross-Function Priorities</h3>
+          <p>Operational and managerial priorities differed. I organized views by role while preserving a consistent global data model.</p>
+        </div>
+        <div>
+          <h3>Decision Latency</h3>
+          <p>Insights came too late in review cycles. I prioritized alert-oriented summaries and trend visibility for faster interventions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>What This Project Demonstrates</h2>
+      <ul class="checklist">
+        <li>Strong translation of business problems into measurable product modules.</li>
+        <li>Ability to design analytics systems used by both operations and leadership.</li>
+        <li>Hands-on execution across product thinking, data modeling, and dashboard UX.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Next-Phase Roadmap</h2>
+      <ul>
+        <li>Automated anomaly detection for proactive issue discovery.</li>
+        <li>Forecast panels for demand and inventory-sensitive decisions.</li>
+        <li>Expanded audit trails for enterprise-grade governance and trust.</li>
       </ul>
     </section>
 
     <section class="card">
       <h2>Stack</h2>
       <p>SaaS architecture, analytics dashboards, operational data flows, web product delivery.</p>
+      <div class="pill-row" aria-label="Technology and delivery focus">
+        <span class="pill">Dashboard Design</span>
+        <span class="pill">Operational Analytics</span>
+        <span class="pill">SaaS Delivery</span>
+        <span class="pill">Data-Driven Product</span>
+      </div>
       <p><a href="https://app.mutthasales.in" target="_blank" rel="noreferrer">Visit Live Product →</a></p>
+    </section>
+
+    <section class="card">
+      <h2>Want Similar Business Enablement?</h2>
+      <p class="muted">If you're building a data-backed sales or operations platform, I can help shape the metrics layer, dashboard strategy, and execution roadmap end-to-end.</p>
+      <p><a href="/pranit-portfolio.html#contact">Start a conversation →</a></p>
     </section>
   </main>
 </body>
