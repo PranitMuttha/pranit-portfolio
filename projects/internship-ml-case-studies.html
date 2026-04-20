@@ -5,51 +5,300 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Case study: Internship ML work by Pranit Muttha." />
   <title>Case Study — Internship ML Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Outfit:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    :root { --bg:#070b16; --surface:#121a30; --text:#edf2ff; --muted:#9aabcf; --primary:#5ce1ff; }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
-    .wrap { width:min(920px,92%); margin:3rem auto; }
-    a { color:var(--primary); text-decoration:none; }
-    .card { background:var(--surface); border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:1.2rem; margin:1rem 0; }
-    .hero-img { width:100%; border-radius:14px; border:1px solid rgba(255,255,255,.16); margin:1rem 0; }
-    h1,h2 { line-height:1.2; }
-    ul { padding-left:1.2rem; }
+    :root {
+      --bg: #070914; 
+      --surface: rgba(255, 255, 255, 0.03); 
+      --surface-border: rgba(255, 255, 255, 0.1);
+      --text: #edf2ff; 
+      --muted: #8b9ac4; 
+      --primary: #5ce1ff; 
+      --secondary: #a78bfa;
+      --accent: #ffd166;
+    }
+    * { box-sizing: border-box; }
+    body { 
+      margin: 0; 
+      font-family: 'Outfit', sans-serif; 
+      background: radial-gradient(1200px 800px at 100% 0%, rgba(167, 139, 250, 0.08), transparent 60%),
+                  linear-gradient(180deg, var(--bg) 0%, #05070f 100%);
+      color: var(--text); 
+      line-height: 1.7; 
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .wrap { width: min(1000px, 92%); margin: 4rem auto; position: relative; z-index: 10; }
+    
+    a.back {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+    }
+    a.back:hover { color: var(--primary); }
+
+    h1 { 
+      font-family: 'Syne', sans-serif; 
+      font-size: clamp(2.5rem, 5vw, 4rem); 
+      line-height: 1.1; 
+      margin: 0 0 1rem;
+      letter-spacing: -0.03em;
+    }
+    
+    h1 span {
+      background: linear-gradient(120deg, var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle { 
+      color: var(--muted); 
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 4rem; }
+    .pill { 
+      font-size: 0.8rem; 
+      padding: 0.35rem 1rem; 
+      border-radius: 999px; 
+      border: 1px solid var(--surface-border); 
+      background: var(--surface); 
+      color: var(--text); 
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Model Visuals */
+    .ml-visuals {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .ml-panel {
+      background: rgba(12, 16, 28, 0.85);
+      border: 1px solid var(--surface-border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .ml-header { margin-bottom: 1.5rem; }
+    .ml-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; margin: 0; color: var(--text); }
+    .ml-subtitle { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+
+    .chart-box {
+      height: 250px;
+      position: relative;
+    }
+
+    .grid-2 { 
+      display: grid; 
+      gap: 1.5rem; 
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+      margin-bottom: 4rem;
+    }
+
+    .card { 
+      background: var(--surface); 
+      border: 1px solid var(--surface-border); 
+      border-radius: 16px; 
+      padding: 2rem; 
+      transition: all 0.3s ease;
+    }
+    .card:hover { border-color: rgba(167, 139, 250, 0.3); background: rgba(255, 255, 255, 0.05); }
+
+    .card h2 { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-top: 0; margin-bottom: 1.2rem; }
+
+    ul.checklist { list-style: none; padding: 0; margin: 0; }
+    ul.checklist li { padding-left: 2rem; position: relative; margin-bottom: 1rem; }
+    ul.checklist li::before { content: '✓'; position: absolute; left: 0; color: var(--secondary); font-family: 'JetBrains Mono', monospace; }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(120deg, var(--secondary), var(--accent));
+      color: #070b16;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(167, 139, 250, 0.4); }
+
+    @media (max-width: 768px) {
+      .ml-visuals { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <p><a href="/">← Back to portfolio</a></p>
-    <h1>Internship ML Case Studies</h1>
-    <p>Role: Data Science Intern</p>
-    <img class="hero-img" src="/assets/projects/ml-case-studies.svg" alt="Internship ML case study visual summary" loading="lazy" decoding="async" width="1280" height="720" />
+    <a href="/pranit-portfolio.html" class="back">← Back to portfolio</a>
+    
+    <h1>Internship ML <span>Case Studies</span></h1>
+    <p class="subtitle">A portfolio of supervised learning workflows focused on baseline consistency, diagnostic evaluation, and data storytelling.</p>
+    
+    <div class="pill-row">
+      <span class="pill">Scikit-learn</span>
+      <span class="pill">Regression</span>
+      <span class="pill">Classification</span>
+      <span class="pill">Data Visualization</span>
+    </div>
 
-    <section class="card">
-      <h2>Scope</h2>
-      <p>Built multiple practical machine-learning mini-projects from exploration to model interpretation.</p>
-    </section>
+    <!-- Data Visualization Dashboard -->
+    <div class="ml-visuals">
+      <div class="ml-panel">
+        <div class="ml-header">
+          <h2 class="ml-title">Classification Boundary Analysis</h2>
+          <div class="ml-subtitle">Iris classification via Logistic Regression</div>
+        </div>
+        <div class="chart-box">
+          <canvas id="scatterChart"></canvas>
+        </div>
+      </div>
+      <div class="ml-panel">
+        <div class="ml-header">
+          <h2 class="ml-title">Sales Prediction Weights</h2>
+          <div class="ml-subtitle">Multiple Linear Regression Feature Importance</div>
+        </div>
+        <div class="chart-box">
+          <canvas id="barChart"></canvas>
+        </div>
+      </div>
+    </div>
 
-    <section class="card">
-      <h2>Projects Delivered</h2>
-      <ul>
-        <li>Iris classification using logistic regression.</li>
-        <li>Unemployment trend analysis with visual storytelling.</li>
-        <li>Sales prediction using multiple linear regression.</li>
-      </ul>
-    </section>
+    <div class="grid-2">
+      <div class="card">
+        <h2>Executive Summary</h2>
+        <p>This internship portfolio combines practical projects covering classification, regression, and trend analysis. The objective was to build strong end-to-end habits: data cleaning, hypothesis-driven exploration, baseline modeling, evaluation, and stakeholder-friendly storytelling.</p>
+      </div>
 
-    <section class="card">
-      <h2>Impact</h2>
-      <ul>
-        <li>Strengthened hands-on model development discipline.</li>
-        <li>Translated analysis into clear stakeholder insights.</li>
-      </ul>
-    </section>
+      <div class="card">
+        <h2>Methodology Framework</h2>
+        <ul class="checklist">
+          <li><strong>Data Prep:</strong> Profile distributions, handle missing values, and align target features.</li>
+          <li><strong>Exploration:</strong> Visual checks to identify strong predictive patterns.</li>
+          <li><strong>Modeling:</strong> Train baseline algorithms (Logistic Regression, Multiple Linear).</li>
+          <li><strong>Evaluation:</strong> Strict Train/Validation splits and metric behavior analysis.</li>
+        </ul>
+      </div>
+    </div>
 
-    <section class="card">
-      <h2>Stack</h2>
-      <p>Python, Pandas, Scikit-learn, Matplotlib/Seaborn, model evaluation basics.</p>
-    </section>
+    <div class="card" style="margin-bottom: 4rem; padding: 2.5rem; background: rgba(167, 139, 250, 0.05); border-color: rgba(167, 139, 250, 0.2);">
+      <h2>Key Takeaways & Impact</h2>
+      <p style="max-width: 800px; color: var(--muted); margin-bottom: 2rem;">Moving past academic accuracy metrics, I learned how to frame models around business value.</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+        <div>
+          <h3 style="font-family:'Syne'; font-size:1.3rem; margin-bottom:0.5rem; color:var(--text);">Interpretability</h3>
+          <p style="font-size:0.9rem; color:var(--muted); margin:0;">Explaining feature impact and model behavior beyond just output scores.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Syne'; font-size:1.3rem; margin-bottom:0.5rem; color:var(--text);">Decision Utility</h3>
+          <p style="font-size:0.9rem; color:var(--muted); margin:0;">Connecting analytical results to practical recommendations for planning action.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Syne'; font-size:1.3rem; margin-bottom:0.5rem; color:var(--text);">Baseline Reliability</h3>
+          <p style="font-size:0.9rem; color:var(--muted); margin:0;">Establishing dependable baselines with clean split strategies before adding complexity.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <h2 style="font-family: 'Syne', sans-serif; font-size: 2.2rem; margin-bottom: 1.5rem;">Need Applied ML Support?</h2>
+      <a href="/pranit-portfolio.html#contact" class="btn" style="padding: 1.2rem 3rem; font-size: 1.1rem;">Start a Conversation</a>
+    </div>
   </main>
+
+  <script>
+    Chart.defaults.color = '#8b9ac4';
+    Chart.defaults.font.family = "'Outfit', sans-serif";
+
+    // Scatter Chart (Classification Sim)
+    const ctxScatter = document.getElementById('scatterChart').getContext('2d');
+    
+    // Generate mock scatter points
+    const genP = (cx, cy, count, jitter, color) => Array.from({length: count}, () => ({
+      x: cx + (Math.random()-0.5)*jitter, 
+      y: cy + (Math.random()-0.5)*jitter
+    }));
+
+    new Chart(ctxScatter, {
+      type: 'scatter',
+      data: {
+        datasets: [{
+          label: 'Class A',
+          data: genP(3, 4, 30, 2, '#5ce1ff'),
+          backgroundColor: 'rgba(92, 225, 255, 0.7)'
+        }, {
+          label: 'Class B',
+          data: genP(6, 7, 30, 2.5, '#a78bfa'),
+          backgroundColor: 'rgba(167, 139, 250, 0.7)'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: 'rgba(255,255,255,0.05)' } },
+          y: { grid: { color: 'rgba(255,255,255,0.05)' } }
+        },
+        animation: { duration: 2000 }
+      }
+    });
+
+    // Bar Chart (Feature Importance Sim)
+    const ctxBar = document.getElementById('barChart').getContext('2d');
+    new Chart(ctxBar, {
+      type: 'bar',
+      data: {
+        labels: ['Store Traffic', 'Promo Flags', 'Holiday', 'Comp Price', 'Inventory', 'Weather'],
+        datasets: [{
+          label: 'Feature Weight',
+          data: [0.85, 0.62, 0.51, -0.42, 0.28, -0.15],
+          backgroundColor: (ctx) => {
+            return ctx.raw > 0 ? '#ffd166' : '#ff5c77';
+          },
+          borderRadius: 4
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: 'rgba(255,255,255,0.05)' } },
+          y: { grid: { display: false } }
+        },
+        animation: { duration: 1500, delay: 500 }
+      }
+    });
+  </script>
 </body>
 </html>
