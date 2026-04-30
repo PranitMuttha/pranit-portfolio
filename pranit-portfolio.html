@@ -1218,8 +1218,8 @@
         <article class="project" data-reveal>
           <span class="badge">Computer Vision</span>
           <h3>Smart Car Parking System</h3>
-          <p>Implemented image-processing based parking-slot detection to monitor availability and support real-time smart parking decisions.</p>
-          <div class="tags"><span class="tag">Image Processing</span><span class="tag">Python</span><span class="tag">CV</span><span class="tag">Team Lead</span></div>
+          <p>Led and developed a computer-vision prototype for real-time parking occupancy detection, translating camera feeds into actionable availability insights.</p>
+          <div class="tags"><span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">C/C++</span><span class="tag">Team Lead</span></div>
           <a href="/projects/smart-car-parking-system.html">Read Case Study →</a>
         </article>
       </div>
@@ -1352,7 +1352,7 @@
       <div class="section-head">
         <div>
           <p class="label" data-i18n="contactLabel">Contact</p>
-          <h2 data-i18n="contactTitle">Let's Build <span>Something Great</span></h2>
+          <h2 data-i18n-html="contactTitleHtml">Let's Build <span>Something Great</span></h2>
         </div>
       </div>
 
@@ -1426,7 +1426,7 @@
         heroText: 'I design intelligent products that connect data, AI, and user-focused web experiences. Currently pursuing an MS in Web & Data Science at University of Koblenz, while building real-world SaaS systems and analytics solutions.',
         heroBtnWork: 'View my work →', heroBtnCollab: "Let's collaborate", heroBtnResume: 'View Resume',
         contactLabel: 'Contact',
-        contactTitle: "Let's Build Something Great",
+        contactTitleHtml: "Let's Build <span>Something Great</span>",
         directLinksTitle: 'Direct Links',
         directLinksText: 'If you have a role, project, or collaboration in mind, I’m ready to discuss.',
         quickMessageTitle: 'Quick Message',
@@ -1447,7 +1447,7 @@
         heroText: 'Ich entwickle intelligente Produkte, die Daten, KI und benutzerorientierte Web-Erlebnisse verbinden. Derzeit studiere ich Web & Data Science an der Universität Koblenz und baue praxisnahe SaaS- und Analytics-Lösungen.',
         heroBtnWork: 'Meine Arbeiten ansehen →', heroBtnCollab: 'Zusammenarbeiten', heroBtnResume: 'Lebenslauf ansehen',
         contactLabel: 'Kontakt',
-        contactTitle: 'Lass uns etwas Großartiges bauen',
+        contactTitleHtml: 'Lass uns <span>etwas Großartiges bauen</span>',
         directLinksTitle: 'Direkte Links',
         directLinksText: 'Wenn du eine Rolle, ein Projekt oder eine Zusammenarbeit im Kopf hast, freue ich mich auf den Austausch.',
         quickMessageTitle: 'Kurznachricht',
@@ -1467,6 +1467,110 @@
       de: ['Data Scientist', 'KI- und Analytics-Ingenieur', 'SaaS Produktentwickler', 'Web- & Data-Science-Forscher']
     };
 
+    const autoTextTranslations = {
+      de: {
+        'About': 'Über mich',
+        'Skills': 'Fähigkeiten',
+        'Projects': 'Projekte',
+        'Case Studies': 'Fallstudien',
+        'Experience': 'Erfahrung',
+        'Contact': 'Kontakt',
+        'Koblenz, Germany': 'Koblenz, Deutschland',
+        'Bachelor CGPA': 'Bachelor-CGPA',
+        'Internships': 'Praktika',
+        'Certifications': 'Zertifikate',
+        'Languages': 'Sprachen',
+        'Current Focus': 'Aktueller Fokus',
+        'SaaS Product Engineering': 'SaaS-Produktentwicklung',
+        'Built and deployed': 'Entwickelt und bereitgestellt',
+        'Data-Driven E-commerce Growth': 'Datengetriebenes E-Commerce-Wachstum',
+        'Dashboards, KPI intelligence, and operational automation': 'Dashboards, KPI-Intelligenz und operative Automatisierung',
+        'Open To': 'Offen für',
+        'Data Science, Analytics, and AI-enabled Product roles': 'Rollen in Data Science, Analytics und KI-gestützten Produkten',
+        'Excel / Dashboarding': 'Excel / Dashboarding',
+        'KPI Analytics': 'KPI-Analytik',
+        'Cloud & Product': 'Cloud & Produkt',
+        'SaaS Architecture': 'SaaS-Architektur',
+        'E-commerce Optimization': 'E-Commerce-Optimierung',
+        'Impactful': 'Wirkungsvolle',
+        'Work': 'Arbeit',
+        'Featured · Live SaaS': 'Empfohlen · Live-SaaS',
+        'MutthaSales Enterprise Platform': 'MutthaSales Enterprise-Plattform',
+        'End-to-end SaaS product powering FMCG distribution workflows, KPI reporting, and e-commerce business operations. Designed for operational clarity and scalable growth.': 'End-to-End-SaaS-Produkt für FMCG-Vertriebsprozesse, KPI-Reporting und E-Commerce-Abläufe. Entwickelt für operative Klarheit und skalierbares Wachstum.',
+        'KPI Dashboards': 'KPI-Dashboards',
+        'Enterprise Workflow': 'Enterprise-Workflow',
+        'Analytics': 'Analytik',
+        'Operations': 'Betrieb',
+        'Read Case Study →': 'Fallstudie lesen →',
+        'Visit Live Product →': 'Live-Produkt ansehen →',
+        'AI + IoT': 'KI + IoT',
+        'Drowsiness Detection System': 'Müdigkeitserkennungssystem',
+        'Built a real-time safety system using Python, OpenCV, and Raspberry Pi to detect fatigue patterns and trigger preventive alerts.': 'Ein Echtzeit-Sicherheitssystem mit Python, OpenCV und Raspberry Pi entwickelt, um Ermüdungsmuster zu erkennen und präventive Warnungen auszulösen.',
+        'Real-time': 'Echtzeit',
+        'Business Intelligence': 'Business Intelligence',
+        'Food Demand Forecasting Dashboard': 'Dashboard zur Prognose der Lebensmittelnachfrage',
+        'Designed Tableau dashboards for demand prediction and planning decisions, improving procurement and fulfillment strategy.': 'Tableau-Dashboards für Nachfrageprognosen und Planungsentscheidungen entwickelt, um Beschaffungs- und Fulfillment-Strategien zu verbessern.',
+        'Forecasting': 'Prognose',
+        'Data Viz': 'Datenvisualisierung',
+        'Supply Chain': 'Lieferkette',
+        'Machine Learning': 'Maschinelles Lernen',
+        'Internship ML Case Studies': 'ML-Fallstudien aus dem Praktikum',
+        'Built and evaluated practical ML pipelines including iris classification, unemployment insights, and sales prediction models.': 'Praktische ML-Pipelines erstellt und bewertet, einschließlich Iris-Klassifikation, Arbeitslosenanalysen und Umsatzprognosemodellen.',
+        'Regression': 'Regression',
+        'Classification': 'Klassifikation',
+        'Computer Vision': 'Computer Vision',
+        'Smart Car Parking System': 'Intelligentes Parkplatzsystem',
+        'Led and developed a computer-vision prototype for real-time parking occupancy detection, translating camera feeds into actionable availability insights.': 'Ein Computer-Vision-Prototyp zur Echtzeit-Erkennung von Parkplatzbelegung geleitet und entwickelt, der Kameradaten in verwertbare Verfügbarkeitsinformationen umsetzt.',
+        'Team Lead': 'Teamleiter',
+        'Professional': 'Beruflicher',
+        'Journey': 'Werdegang',
+        'Aug 2024 — Present': 'Aug 2024 — Heute',
+        'E-commerce Manager (Data Analysis)': 'E-Commerce-Manager (Datenanalyse)',
+        'Built KPI dashboards and operational reporting for leadership decision-making.': 'KPI-Dashboards und operative Berichte für Führungsentscheidungen erstellt.',
+        'Delivered measurable SKU-level revenue growth through data-led optimization.': 'Messbares Umsatzwachstum auf SKU-Ebene durch datengetriebene Optimierung erzielt.',
+        'Created and maintained live business platform app.mutthasales.in.': 'Die Live-Business-Plattform app.mutthasales.in erstellt und gepflegt.',
+        'Apr 2023 — May 2023': 'Apr 2023 — Mai 2023',
+        'Salesforce Developer Virtual Intern': 'Salesforce Developer Virtual Intern',
+        'Worked on Salesforce fundamentals, process automation, and Apex tasks.': 'An Salesforce-Grundlagen, Prozessautomatisierung und Apex-Aufgaben gearbeitet.',
+        'Practiced enterprise workflows, debugging, and testing discipline.': 'Enterprise-Workflows, Debugging und Testdisziplin angewendet.',
+        'Data Science Intern': 'Data-Science-Praktikant',
+        'Delivered machine-learning mini projects on classification, regression, and analytics.': 'ML-Mini-Projekte zu Klassifikation, Regression und Analytik umgesetzt.',
+        'Converted raw data into executive-ready visual and numerical insights.': 'Rohdaten in managementtaugliche visuelle und numerische Erkenntnisse umgewandelt.',
+        'Measured': 'Messbare',
+        'Business Outcomes': 'Geschäftsergebnisse',
+        'Focused examples showing impact, not only implementation details.': 'Konkrete Beispiele mit Wirkung statt nur Implementierungsdetails.',
+        'SKU Revenue Lift in 3 Months': 'SKU-Umsatzsteigerung in 3 Monaten',
+        'Optimized listing strategy and channel KPIs for a priority FMCG SKU, resulting in measurable organic sales growth.': 'Listing-Strategie und Kanal-KPIs für eine priorisierte FMCG-SKU optimiert, was zu messbarem organischem Umsatzwachstum führte.',
+        'Ops Visibility Across Teams': 'Operative Transparenz über Teams hinweg',
+        'Built operational dashboards and workflows in a live SaaS product to align inventory, sales, and management decisions.': 'Operative Dashboards und Workflows in einem Live-SaaS-Produkt aufgebaut, um Lager, Vertrieb und Managemententscheidungen abzustimmen.',
+        'Driver Safety Alert Prototype': 'Prototyp für Fahrer-Sicherheitswarnung',
+        'Led a computer-vision system for drowsiness detection using OpenCV and Raspberry Pi, designed for immediate alerting.': 'Ein Computer-Vision-System zur Müdigkeitserkennung mit OpenCV und Raspberry Pi geleitet, ausgelegt auf sofortige Warnung.',
+        'Education & Trust': 'Ausbildung & Vertrauen',
+        'Credentials': 'Qualifikationen',
+        '& Recognition': '& Anerkennung',
+        'University of Koblenz · Germany · 2025–2027': 'Universität Koblenz · Deutschland · 2025–2027',
+        'B.E. AI & Data Science': 'B.E. KI & Data Science',
+        'Data Science Specialization': 'Spezialisierung Data Science',
+        'Internshala Trainings · 4-month intensive track': 'Internshala Trainings · 4-monatiger Intensivkurs',
+        'Advanced Google Analytics': 'Erweitertes Google Analytics',
+        'Google · Certified track completion': 'Google · Zertifizierter Abschluss',
+        '“Pranit combines technical depth with sharp business understanding and execution speed.”': '„Pranit verbindet technische Tiefe mit klarem Geschäftsverständnis und hoher Umsetzungsgeschwindigkeit.“',
+        'Stakeholder Feedback · E-commerce Operations': 'Stakeholder-Feedback · E-Commerce Operations',
+        '“Reliable with data, strong in dashboards, and very proactive with product improvements.”': '„Zuverlässig mit Daten, stark in Dashboards und sehr proaktiv bei Produktverbesserungen.“',
+        'Team Collaboration Note · Analytics Projects': 'Team-Notiz zur Zusammenarbeit · Analytics-Projekte',
+        '“Excellent at translating complex problems into practical models and measurable outcomes.”': '„Hervorragend darin, komplexe Probleme in praktische Modelle und messbare Ergebnisse zu übersetzen.“',
+        'Mentor Review · Internship Program': 'Mentor-Review · Praktikumsprogramm',
+        '💼 LinkedIn Profile': '💼 LinkedIn-Profil',
+        '🚀 Live Product: app.mutthasales.in': '🚀 Live-Produkt: app.mutthasales.in',
+        '📄 View Printable Resume': '📄 Druckbaren Lebenslauf ansehen',
+        'Don’t fill this out if you\'re human:': 'Bitte nicht ausfüllen, wenn Sie ein Mensch sind:',
+        'Resume': 'Lebenslauf',
+        'Pranit Narendra Muttha · Crafted with ambition and precision.': 'Pranit Narendra Muttha · Mit Ehrgeiz und Präzision erstellt.'
+      }
+    };
+
+    const autoTextNodes = [];
+
     let currentLanguage = localStorage.getItem('portfolio-lang') || (navigator.language.startsWith('de') ? 'de' : 'en');
 
     year.textContent = new Date().getFullYear();
@@ -1475,6 +1579,59 @@
     let roleIndex = 0;
     let charIndex = 0;
     let deleting = false;
+
+    function normalizeWhitespace(value) {
+      return value.replace(/\s+/g, ' ').trim();
+    }
+
+    function collectAutoTextNodes() {
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          if (!node.parentElement) {
+            return NodeFilter.FILTER_REJECT;
+          }
+
+          if (node.parentElement.closest('script, style, noscript, [data-i18n], [data-i18n-placeholder], [data-i18n-html], .lang-btn')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+
+          const normalized = normalizeWhitespace(node.textContent);
+          if (!normalized) {
+            return NodeFilter.FILTER_REJECT;
+          }
+
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      let node = walker.nextNode();
+      while (node) {
+        autoTextNodes.push({ node, originalText: node.textContent });
+        node = walker.nextNode();
+      }
+    }
+
+    function applyAutoTextTranslations(language) {
+      if (!autoTextNodes.length) {
+        collectAutoTextNodes();
+      }
+
+      const dictionary = autoTextTranslations[language] || {};
+
+      autoTextNodes.forEach((item) => {
+        const normalized = normalizeWhitespace(item.originalText);
+        const translated = dictionary[normalized];
+
+        if (!translated) {
+          item.node.textContent = item.originalText;
+          return;
+        }
+
+        const leadingSpace = item.originalText.match(/^\s*/)?.[0] || '';
+        const trailingSpace = item.originalText.match(/\s*$/)?.[0] || '';
+        item.node.textContent = `${leadingSpace}${translated}${trailingSpace}`;
+      });
+    }
 
     function applyLanguage(language) {
       const selectedLanguage = i18n[language] ? language : 'en';
@@ -1489,12 +1646,21 @@
         }
       });
 
+      document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+        const key = element.dataset.i18nHtml;
+        if (dictionary[key]) {
+          element.innerHTML = dictionary[key];
+        }
+      });
+
       document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
         const key = element.dataset.i18nPlaceholder;
         if (dictionary[key]) {
           element.placeholder = dictionary[key];
         }
       });
+
+      applyAutoTextTranslations(selectedLanguage);
 
       roles = rolesByLanguage[selectedLanguage] || rolesByLanguage.en;
       roleIndex = 0;
