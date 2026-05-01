@@ -34,30 +34,11 @@ function KpiBlock() {
 
 /* ---------- Drowsiness EAR demo ---------- */
 function EarDemo() {
-  const [series, setSeries] = useState(Array.from({ length: 50 }, () => 0.30 + Math.random() * 0.05));
-  const [warn, setWarn] = useState(false);
-  useEffect(() => {
-    let tick = 0;
-    const id = setInterval(() => {
-      tick++;
-      const cycle = tick % 80;
-      let v;
-      if (cycle > 65) {
-        v = 0.13 + Math.random() * 0.05;
-        setWarn(true);
-      } else {
-        v = 0.30 + Math.random() * 0.05;
-        if (Math.random() > 0.92 && cycle <= 65) v = 0.18;
-        setWarn(false);
-      }
-      setSeries(s => [...s.slice(1), v]);
-    }, 130);
-    return () => clearInterval(id);
-  }, []);
+  const series = Array.from({ length: 50 }, (_, i) => 0.30 + Math.sin(i / 5) * 0.015);
   return (
     <div className="demo-canvas">
       <div className="ear-frame">
-        <Sparkline data={series} color={warn ? "oklch(0.55 0.16 25)" : "oklch(0.55 0.14 35)"} height={100} />
+        <Sparkline data={series} color="oklch(0.55 0.14 35)" height={100} />
       </div>
     </div>
   );
