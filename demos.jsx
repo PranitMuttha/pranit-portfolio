@@ -22,9 +22,6 @@ function KpiBlock() {
   return (
     <div className="demo-canvas">
       <div className="spark-frame">
-        <div className="label-row">
-          <span className="label">Activity · 30d</span>
-        </div>
         <Sparkline data={series} color="oklch(0.55 0.14 35)" fill height={120} />
       </div>
     </div>
