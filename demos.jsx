@@ -69,23 +69,15 @@ function ParkingDemo() {
 
 /* ---------- Forecast demo ---------- */
 function ForecastDemo() {
-  const labels = ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S'];
   // 'Actual' series removed per request; keep forecast demo only
   const forecast = [400, 490, 500, 470, 580, 720, 800, 450, 500, 550, 520, 610, 750, 860];
   return (
     <div className="demo-canvas">
-      {/* KPIs removed: Accuracy / Speedup */}
       <div className="fc-frame">
-        <div className="fc-legend">
-          <span className="f">Forecast</span>
-        </div>
         <div style={{ position: 'relative', height: 120 }}>
           <div style={{ position: 'absolute', inset: 0 }}>
             <Sparkline data={forecast} color="oklch(0.55 0.14 35)" dashed height={120} />
           </div>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
-          {labels.map((l, i) => <span key={i} className="label" style={{ fontSize: 9 }}>{l}</span>)}
         </div>
       </div>
     </div>

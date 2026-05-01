@@ -359,7 +359,6 @@
     for(let i=1; i<=totalSlots; i++){
       const slot = document.createElement('div');
       slot.className = 'parking-slot occupied';
-      slot.dataset.slot = `A${i}`;
       slot.innerHTML = '<div class="bounding-box"></div>';
       grid.appendChild(slot);
     }
