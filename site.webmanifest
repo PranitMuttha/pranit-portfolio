@@ -1,0 +1,16 @@
+{
+  "name": "Pranit Muttha Portfolio",
+  "short_name": "Pranit",
+  "description": "Portfolio of Pranit Narendra Muttha — Data Scientist, AI Engineer, and Web Developer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070b16",
+  "theme_color": "#070b16",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

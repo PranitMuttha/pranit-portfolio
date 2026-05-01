@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0b1226"/>
+  <text x="56" y="86" fill="#edf2ff" font-size="42" font-family="Arial, sans-serif" font-weight="700">Food Demand Forecast Dashboard</text>
+  <rect x="56" y="120" width="1168" height="1" fill="#2f3b5e"/>
+  <rect x="56" y="158" width="548" height="500" rx="16" fill="#15213f"/>
+  <rect x="620" y="158" width="604" height="240" rx="16" fill="#15213f"/>
+  <rect x="620" y="418" width="604" height="240" rx="16" fill="#15213f"/>
+  <polyline points="96,560 150,530 220,540 290,485 360,500 430,430 500,410 570,360" stroke="#5ce1ff" stroke-width="6" fill="none"/>
+  <polyline points="96,580 150,570 220,555 290,540 360,520 430,505 500,490 570,470" stroke="#a78bfa" stroke-width="4" fill="none" opacity="0.8"/>
+  <text x="90" y="198" fill="#9aabcf" font-size="20" font-family="Arial, sans-serif">Weekly Demand Trend</text>
+  <text x="654" y="198" fill="#9aabcf" font-size="20" font-family="Arial, sans-serif">Top Fulfillment Centers</text>
+  <text x="654" y="458" fill="#9aabcf" font-size="20" font-family="Arial, sans-serif">Forecast vs Actual</text>
+</svg>

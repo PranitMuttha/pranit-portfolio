@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case study: Drowsiness Detection System by Pranit Muttha." />
+  <title>Case Study — Drowsiness Detection System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Outfit:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg: #030508; 
+      --surface: rgba(255, 255, 255, 0.03); 
+      --surface-border: rgba(255, 255, 255, 0.1);
+      --text: #edf2ff; 
+      --muted: #8b9ac4; 
+      --primary: #5ce1ff; 
+      --secondary: #a78bfa;
+      --accent: #ffd166;
+      --danger: #ff5c77;
+    }
+    * { box-sizing: border-box; }
+    body { 
+      margin: 0; 
+      font-family: 'Outfit', sans-serif; 
+      background: radial-gradient(1000px 600px at 0% 50%, rgba(255, 92, 119, 0.05), transparent 70%),
+                  linear-gradient(180deg, var(--bg) 0%, #050810 100%);
+      color: var(--text); 
+      line-height: 1.7; 
+      overflow-x: hidden;
+    }
+
+    .wrap { width: min(1000px, 92%); margin: 4rem auto; position: relative; z-index: 10; }
+    
+    a.back {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+    }
+    a.back:hover { color: var(--primary); }
+
+    h1 { 
+      font-family: 'Syne', sans-serif; 
+      font-size: clamp(2.5rem, 5vw, 4rem); 
+      line-height: 1.1; 
+      margin: 0 0 1rem;
+      letter-spacing: -0.03em;
+    }
+    
+    h1 span {
+      background: linear-gradient(120deg, var(--danger), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle { 
+      color: var(--muted); 
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 4rem; }
+    .pill { 
+      font-size: 0.8rem; 
+      padding: 0.35rem 1rem; 
+      border-radius: 999px; 
+      border: 1px solid var(--surface-border); 
+      background: var(--surface); 
+      color: var(--text); 
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Diagnostics UI */
+    .diagnostics-panel {
+      background: rgba(10, 12, 18, 0.85);
+      border: 1px solid var(--surface-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+      position: relative;
+    }
+
+    .diag-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      transition: all 0.3s ease;
+    }
+    
+    .status-indicator.safe {
+      color: #67f0a8;
+      background: rgba(103, 240, 168, 0.1);
+      border: 1px solid rgba(103, 240, 168, 0.3);
+    }
+    
+    .status-indicator.warning {
+      color: var(--danger);
+      background: rgba(255, 92, 119, 0.1);
+      border: 1px solid rgba(255, 92, 119, 0.3);
+      animation: pulse-warn 1s infinite;
+    }
+
+    @keyframes pulse-warn {
+      0% { box-shadow: 0 0 0 0 rgba(255, 92, 119, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 92, 119, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 92, 119, 0); }
+    }
+
+    .diag-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .diag-box {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .diag-label { color: var(--muted); font-size: 0.8rem; font-family: 'JetBrains Mono'; margin-bottom: 0.5rem; }
+    .diag-val { font-family: 'Syne'; font-size: 2.2rem; color: var(--text); }
+    
+    .chart-container {
+      height: 250px;
+      width: 100%;
+      position: relative;
+    }
+
+    .grid-2 { 
+      display: grid; 
+      gap: 2rem; 
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+      margin-bottom: 4rem;
+    }
+
+    .card { 
+      background: var(--surface); 
+      border: 1px solid var(--surface-border); 
+      border-radius: 20px; 
+      padding: 2.5rem; 
+      transition: all 0.3s ease;
+    }
+    .card:hover { border-color: rgba(92, 225, 255, 0.3); background: rgba(255, 255, 255, 0.05); }
+
+    .card h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin-top: 0; margin-bottom: 1.5rem; }
+    ul.checklist { list-style: none; padding: 0; margin: 0; }
+    ul.checklist li { padding-left: 2rem; position: relative; margin-bottom: 1.2rem; }
+    ul.checklist li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-family: 'JetBrains Mono', monospace; }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(120deg, var(--danger), var(--accent));
+      color: #070b16;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(255, 92, 119, 0.4); }
+
+    @media (max-width: 768px) {
+      .diag-metrics { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a href="/pranit-portfolio.html" class="back">← Back to portfolio</a>
+    
+    <h1>Drowsiness <span>Detection System</span></h1>
+    <p class="subtitle">A real-time edge AI prototype combining computer vision and rapid inference to track driver fatigue and trigger preventative alerts.</p>
+    
+    <div class="pill-row">
+      <span class="pill">Real-Time CV</span>
+      <span class="pill">Edge Deployment</span>
+      <span class="pill">OpenCV</span>
+      <span class="pill">Safety Alerts</span>
+    </div>
+
+    <!-- Interactive Diagnostics Panel -->
+    <div class="diagnostics-panel">
+      <div class="diag-header">
+        <div style="font-family:'Syne'; font-size:1.4rem;">Telemetry Overlay Simulation</div>
+        <div class="status-indicator safe" id="statusBadge">Active Monitoring</div>
+      </div>
+      
+      <div class="diag-metrics">
+        <div class="diag-box">
+          <div class="diag-label">Eye Aspect Ratio (EAR)</div>
+          <div class="diag-val" id="earVal">0.32</div>
+        </div>
+        <div class="diag-box">
+          <div class="diag-label">Fatigue Risk Score</div>
+          <div class="diag-val" id="riskVal">12%</div>
+        </div>
+        <div class="diag-box">
+          <div class="diag-label">Frames Per Second</div>
+          <div class="diag-val">28.4</div>
+        </div>
+      </div>
+      
+      <div class="chart-container">
+        <canvas id="earChart"></canvas>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2>Logic & Signal Features</h2>
+        <ul class="checklist">
+          <li><strong>Eye Closure Duration:</strong> Measuring the Eye Aspect Ratio (EAR) across sequential frames.</li>
+          <li><strong>Blink Frequency Trend:</strong> Analyzing the baseline blink rate against current rate to detect micro-sleeps.</li>
+          <li><strong>Decision Strategy:</strong> Sliding-window smoothing to minimize noise and threshold-based risk escalation.</li>
+          <li><strong>Cooldown Rules:</strong> Integrated logic to avoid alert spamming directly post-incident.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Edge Pipeline</h2>
+        <ul class="checklist">
+          <li><strong>Capture:</strong> Reads frames continuously at the edge device level (Raspberry Pi).</li>
+          <li><strong>Vision:</strong> Detects facial landmarks to extract fatigue-relevant bounding areas.</li>
+          <li><strong>Inference:</strong> Computes instantaneous drowsiness scores based on the EAR threshold.</li>
+          <li><strong>Alert:</strong> Hardware triggers audio/visual warning physically connected to GPIO pins.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 4rem; text-align: center; border-color: rgba(255, 92, 119, 0.3); background: rgba(255, 92, 119, 0.05);">
+        <h2>Why Building at the Edge Matters</h2>
+        <p style="max-width: 700px; margin: 0 auto 2rem; color: var(--muted);">Cloud-based CV pipelines introduce network latency which is unacceptable for active safety systems. By porting lightweight inference models to the Edge, this system acts independently and instantaneously in low-connectivity areas.</p>
+        <div style="display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;">
+          <div style="font-family:'Syne'; font-size:1.8rem;">Low Latency</div>
+          <div style="font-family:'Syne'; font-size:1.8rem; color:var(--danger)">High Reliability</div>
+          <div style="font-family:'Syne'; font-size:1.8rem;">Offline First</div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <h2 style="font-family: 'Syne', sans-serif; font-size: 2.2rem; margin-bottom: 1.5rem;">Need CV models ported to the Edge?</h2>
+      <a href="/pranit-portfolio.html#contact" class="btn" style="padding: 1.2rem 3rem; font-size: 1.1rem;">Reach Out Now</a>
+    </div>
+  </main>
+
+  <script>
+    Chart.defaults.color = '#8b9ac4';
+    Chart.defaults.font.family = "'Outfit', sans-serif";
+    
+    const ctx = document.getElementById('earChart').getContext('2d');
+    
+    // Simulate real-time data array
+    const dataPoints = Array.from({length: 40}, () => 0.30 + Math.random()*0.05);
+    const labels = Array.from({length: 40}, (_, i) => i);
+    
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'EAR',
+          data: dataPoints,
+          borderColor: '#5ce1ff',
+          borderWidth: 2,
+          tension: 0.3,
+          pointRadius: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 0 },
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { display: false },
+          y: { min: 0.1, max: 0.45, grid: { color: 'rgba(255,255,255,0.05)' } }
+        }
+      }
+    });
+
+    const valEl = document.getElementById('earVal');
+    const riskEl = document.getElementById('riskVal');
+    const badgeEl = document.getElementById('statusBadge');
+    
+    let tick = 0;
+    setInterval(() => {
+      tick++;
+      // Simulate normal blinking and occasional drop (drowsiness)
+      let newVal = 0.30 + Math.random()*0.05;
+      
+      // Simulate Drowsiness event every ~8 seconds
+      if(tick % 80 > 65) {
+        newVal = 0.15 + Math.random()*0.05; // Drop
+        badgeEl.className = 'status-indicator warning';
+        badgeEl.innerHTML = '⚠️ FATIGUE DETECTED';
+        chart.data.datasets[0].borderColor = '#ff5c77';
+        riskEl.textContent = '89%';
+        riskEl.style.color = '#ff5c77';
+      } else {
+        badgeEl.className = 'status-indicator safe';
+        badgeEl.innerHTML = 'Active Monitoring';
+        chart.data.datasets[0].borderColor = '#5ce1ff';
+        riskEl.textContent = (10 + Math.random()*5).toFixed(0) + '%';
+        riskEl.style.color = 'var(--text)';
+      }
+
+      // Blink detection
+      if(Math.random() > 0.9 && tick % 80 <= 65) newVal = 0.18; // Quick blink
+
+      valEl.textContent = newVal.toFixed(2);
+      
+      dataPoints.push(newVal);
+      dataPoints.shift();
+      chart.update();
+
+    }, 100);
+  </script>
+</body>
+</html>

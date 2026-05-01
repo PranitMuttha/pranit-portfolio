@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case study: Smart Car Parking System by Pranit Muttha." />
+  <title>Case Study — Smart Car Parking System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Outfit:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050a0f; 
+      --surface: rgba(255, 255, 255, 0.03); 
+      --surface-border: rgba(255, 255, 255, 0.1);
+      --text: #edf2ff; 
+      --muted: #8b9ac4; 
+      --primary: #5ce1ff; 
+      --secondary: #a78bfa;
+      --accent: #ffd166;
+      --occupied: #ff5c77;
+      --free: #67f0a8;
+    }
+    * { box-sizing: border-box; }
+    body { 
+      margin: 0; 
+      font-family: 'Outfit', sans-serif; 
+      background: radial-gradient(1200px 600px at 80% 20%, rgba(92, 225, 255, 0.08), transparent 60%),
+                  linear-gradient(180deg, var(--bg) 0%, #070b16 100%);
+      color: var(--text); 
+      line-height: 1.7; 
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image: 
+        linear-gradient(rgba(92, 225, 255, 0.03) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(92, 225, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      transform: perspective(500px) rotateX(60deg) scale(2);
+      transform-origin: top center;
+      opacity: 0.5;
+    }
+
+    .wrap { width: min(1000px, 92%); margin: 4rem auto; position: relative; z-index: 10; }
+    
+    a.back {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+    }
+    a.back:hover { color: var(--primary); }
+
+    h1 { 
+      font-family: 'Syne', sans-serif; 
+      font-size: clamp(2.5rem, 5vw, 4rem); 
+      line-height: 1.1; 
+      margin: 0 0 1rem;
+      letter-spacing: -0.03em;
+    }
+    
+    h1 span {
+      background: linear-gradient(120deg, var(--primary), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle { 
+      color: var(--muted); 
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 4rem; }
+    .pill { 
+      font-size: 0.8rem; 
+      padding: 0.35rem 1rem; 
+      border-radius: 999px; 
+      border: 1px solid var(--surface-border); 
+      background: var(--surface); 
+      color: var(--text); 
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Dynamic CV Visualization */
+    .cv-visualization {
+      background: rgba(8, 12, 20, 0.9);
+      border: 1px solid rgba(92, 225, 255, 0.2);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 0 40px rgba(92, 225, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 1rem;
+    }
+
+    .cv-title { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em; }
+    .cv-stats { display: flex; gap: 2rem; }
+    .cv-stat-box { display: flex; flex-direction: column; align-items: flex-end; }
+    .cv-stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+    .cv-stat-value { font-family: 'Syne'; font-size: 2rem; line-height: 1; }
+
+    .parking-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      perspective: 800px;
+    }
+
+    .parking-slot {
+      height: 120px;
+      border: 2px dashed rgba(255,255,255,0.15);
+      border-radius: 8px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s ease;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .parking-slot::before {
+      content: attr(data-slot);
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* CV Bounding Box Overlay */
+    .bounding-box {
+      position: absolute;
+      inset: -5px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      transition: inherit;
+      pointer-events: none;
+    }
+
+    .parking-slot.occupied { border-style: solid; border-color: rgba(255, 92, 119, 0.2); background: rgba(255, 92, 119, 0.05); }
+    .parking-slot.occupied .bounding-box { border-color: var(--occupied); box-shadow: 0 0 15px rgba(255, 92, 119, 0.2); }
+    .parking-slot.occupied::after {
+      content: 'CAR DETECTED';
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--occupied);
+      background: rgba(255, 92, 119, 0.1);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      position: absolute;
+      bottom: 10px;
+    }
+
+    .parking-slot.free { border-color: rgba(103, 240, 168, 0.3); background: rgba(103, 240, 168, 0.05); }
+    .parking-slot.free .bounding-box { border-color: var(--free); box-shadow: 0 0 15px rgba(103, 240, 168, 0.2); }
+    .parking-slot.free::after {
+      content: 'AVAILABLE';
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--free);
+      background: rgba(103, 240, 168, 0.1);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      position: absolute;
+      bottom: 10px;
+    }
+
+    /* Scanning animation line */
+    .scan-line {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--primary);
+      box-shadow: 0 0 20px 2px var(--primary);
+      opacity: 0.5;
+      animation: scan 4s infinite linear;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    @keyframes scan {
+      0% { top: 0; opacity: 0; }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    .grid-2 { 
+      display: grid; 
+      gap: 2rem; 
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+      margin-bottom: 4rem;
+    }
+
+    .card { 
+      background: var(--surface); 
+      border: 1px solid var(--surface-border); 
+      border-radius: 20px; 
+      padding: 2.5rem; 
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      border-color: rgba(92, 225, 255, 0.3);
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    ul.checklist { list-style: none; padding: 0; margin: 0; }
+    ul.checklist li { padding-left: 2rem; position: relative; margin-bottom: 1.2rem; }
+    ul.checklist li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-family: 'JetBrains Mono', monospace; }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(120deg, var(--primary), #9cefff);
+      color: #070b16;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(92, 225, 255, 0.4); }
+
+    @media (max-width: 768px) {
+      .parking-grid { grid-template-columns: repeat(2, 1fr); }
+      .cv-stats { flex-direction: column; gap: 1rem; align-items: flex-end; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a href="/pranit-portfolio.html" class="back">← Back to portfolio</a>
+    
+    <h1>Smart Car <span>Parking System</span></h1>
+    <p class="subtitle">Converting unstructured camera feeds into real-time slot availability using computer vision models.</p>
+    <p class="subtitle" style="font-size:1rem; margin-top:-1rem; margin-bottom:2rem; max-width:760px;">Included in my resume project highlights as a core computer-vision build, where I contributed as <strong>Team Lead</strong> and <strong>CV Developer</strong> from prototype design through occupancy detection implementation.</p>
+    
+    <div class="pill-row">
+      <span class="pill">Occupancy Detection</span>
+      <span class="pill">Computer Vision</span>
+      <span class="pill">Python</span>
+      <span class="pill">OpenCV</span>
+      <span class="pill">C/C++</span>
+      <span class="pill">Image Processing</span>
+    </div>
+
+    <!-- CV Dashboard Mockup -->
+    <div class="cv-visualization">
+      <div class="scan-line"></div>
+      <div class="cv-header">
+        <div class="cv-title">Live Vision Stream <span style="font-size:0.6rem; vertical-align:top;">REC</span></div>
+        <div class="cv-stats">
+          <div class="cv-stat-box">
+            <div class="cv-stat-label">Total Slots</div>
+            <div class="cv-stat-value">8</div>
+          </div>
+          <div class="cv-stat-box">
+            <div class="cv-stat-label">Available</div>
+            <div class="cv-stat-value" style="color: var(--free)" id="freeCount">0</div>
+          </div>
+          <div class="cv-stat-box">
+            <div class="cv-stat-label">Confidence</div>
+            <div class="cv-stat-value" style="color: var(--primary)">96.4%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="parking-grid" id="parkingGrid">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2>System Architecture</h2>
+        <ul class="checklist">
+          <li><strong>Capture Layer:</strong> Continuously ingests parking-lot camera frames.</li>
+          <li><strong>Region Layer:</strong> Maps predefined slot coordinates for focused analysis.</li>
+          <li><strong>Detection Layer:</strong> Applies image-processing/CV logic (edge detection, thresholding) to infer occupancy based on pixel density.</li>
+          <li><strong>Presentation Layer:</strong> Displays visual availability status for operator decision support.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Key Challenges Solved</h2>
+        <ul class="checklist">
+          <li><strong>Lighting Variability:</strong> Outdoor environments caused inconsistent frame characteristics. Tuned preprocessing models to stabilize inference.</li>
+          <li><strong>Perspective Distortion:</strong> Refined slot mapping and validation overlays for geometric reliability.</li>
+          <li><strong>False Signals:</strong> Shadows produced noise. Applied rule-based checks and masking to reduce spurious detections.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Role & Resume-Aligned Contributions</h2>
+        <ul class="checklist">
+          <li><strong>Project Leadership:</strong> Led execution planning, module coordination, and milestone-based delivery as team lead.</li>
+          <li><strong>CV Implementation:</strong> Built occupancy detection logic using image-processing and computer-vision workflows.</li>
+          <li><strong>Skill Application:</strong> Applied core stack from resume highlights — Python, OpenCV, and C/C++ fundamentals.</li>
+          <li><strong>Prototype Outcome:</strong> Delivered a practical smart mobility proof-of-concept for real-time parking visibility.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 4rem; text-align: center; border-color: rgba(103, 240, 168, 0.2); background: rgba(103, 240, 168, 0.05);">
+        <h2>Urban Mobility Impact</h2>
+        <p style="max-width: 700px; margin: 0 auto 2rem; color: var(--muted);">By translating raw visual data into binary occupancy logic, this prototype acts as a critical scalable foundational block for modern Smart City infrastructure.</p>
+        <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+          <div><h3 style="font-family:'Syne'; font-size:2rem; color:var(--text); margin:0;">Real-time</h3><p style="color:var(--muted); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; margin:0;">Feedback Loop</p></div>
+          <div><h3 style="font-family:'Syne'; font-size:2rem; color:var(--text); margin:0;">Zero</h3><p style="color:var(--muted); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; margin:0;">Hardware per slot</p></div>
+          <div><h3 style="font-family:'Syne'; font-size:2rem; color:var(--text); margin:0;">Scalable</h3><p style="color:var(--muted); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; margin:0;">Software Base</p></div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <h2 style="font-family: 'Syne', sans-serif; font-size: 2.2rem; margin-bottom: 1.5rem;">Building Smart Mobility Products?</h2>
+      <a href="/pranit-portfolio.html#contact" class="btn" style="padding: 1.2rem 3rem; font-size: 1.1rem;">Start a Conversation</a>
+    </div>
+  </main>
+
+  <script>
+    const grid = document.getElementById('parkingGrid');
+    const freeCountEl = document.getElementById('freeCount');
+    const totalSlots = 8;
+    
+    // Initial slots
+    for(let i=1; i<=totalSlots; i++){
+      const slot = document.createElement('div');
+      slot.className = 'parking-slot occupied';
+      slot.dataset.slot = `A${i}`;
+      slot.innerHTML = '<div class="bounding-box"></div>';
+      grid.appendChild(slot);
+    }
+
+    // Simulate real-time detection changes
+    setInterval(() => {
+      const slots = document.querySelectorAll('.parking-slot');
+      let freeCount = 0;
+      
+      slots.forEach(slot => {
+        // Randomly simulate cars entering/leaving (mostly static, occasional changes)
+        if(Math.random() > 0.85) {
+            if(slot.classList.contains('occupied')) {
+                slot.className = 'parking-slot free';
+            } else {
+                slot.className = 'parking-slot occupied';
+            }
+        }
+        if(slot.classList.contains('free')) freeCount++;
+      });
+      
+      // Animate number
+      freeCountEl.style.opacity = 0;
+      setTimeout(() => {
+        freeCountEl.textContent = freeCount;
+        freeCountEl.style.opacity = 1;
+      }, 300);
+
+    }, 3500); 
+
+    // Initial pass
+    setTimeout(() => {
+      const slots = document.querySelectorAll('.parking-slot');
+      let starts = [1, 3, 6];
+      starts.forEach(i => { if(slots[i]) slots[i].className = 'parking-slot free'; });
+      freeCountEl.textContent = starts.length;
+    }, 1000);
+  </script>
+</body>
+</html>
