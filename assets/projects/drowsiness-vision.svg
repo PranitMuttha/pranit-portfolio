@@ -11,5 +11,5 @@
   <text x="928" y="230" fill="#edf2ff" font-size="24" font-family="Arial, sans-serif">Status</text>
   <text x="928" y="280" fill="#67f0a8" font-size="22" font-family="Arial, sans-serif">Eyes Open: YES</text>
   <text x="928" y="320" fill="#67f0a8" font-size="22" font-family="Arial, sans-serif">Alert: OFF</text>
-  <text x="928" y="360" fill="#9aabcf" font-size="18" font-family="Arial, sans-serif">FPS: 23.8</text>
+  <!-- FPS removed -->
 </svg>

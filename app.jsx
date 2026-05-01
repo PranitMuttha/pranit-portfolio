@@ -255,7 +255,6 @@ function About() {
             <div className="about-grid">
               <div className="stat"><div className="v">9.05</div><div className="k">CGPA · B.E.</div></div>
               <div className="stat"><div className="v">4+</div><div className="k">Production projects</div></div>
-              <div className="stat"><div className="v">94%</div><div className="k">Forecast accuracy</div></div>
             </div>
           </div>
         </div>

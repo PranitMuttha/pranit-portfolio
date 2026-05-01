@@ -35,8 +35,6 @@ function KpiBlock() {
 /* ---------- Drowsiness EAR demo ---------- */
 function EarDemo() {
   const [series, setSeries] = useState(Array.from({ length: 50 }, () => 0.30 + Math.random() * 0.05));
-  const [ear, setEar] = useState(0.32);
-  const [risk, setRisk] = useState(12);
   const [warn, setWarn] = useState(false);
   useEffect(() => {
     let tick = 0;
@@ -47,25 +45,17 @@ function EarDemo() {
       if (cycle > 65) {
         v = 0.13 + Math.random() * 0.05;
         setWarn(true);
-        setRisk(85 + Math.round(Math.random() * 10));
       } else {
         v = 0.30 + Math.random() * 0.05;
         if (Math.random() > 0.92 && cycle <= 65) v = 0.18;
         setWarn(false);
-        setRisk(8 + Math.round(Math.random() * 8));
       }
-      setEar(+v.toFixed(2));
       setSeries(s => [...s.slice(1), v]);
     }, 130);
     return () => clearInterval(id);
   }, []);
   return (
     <div className="demo-canvas">
-      <div className="kpi-row">
-        <div className="kpi"><div className="k">EAR</div><div className="v">{ear.toFixed(2)}</div></div>
-        <div className="kpi"><div className="k">Risk</div><div className="v" style={{ color: warn ? 'var(--bad)' : 'var(--ink)' }}>{risk}<small>%</small></div></div>
-        <div className="kpi"><div className="k">FPS</div><div className="v">28<small>.4</small></div></div>
-      </div>
       <div className="ear-frame">
         <div className={"ear-status " + (warn ? "warn" : "")}>
           <span style={{ width: 6, height: 6, borderRadius: 99, background: 'currentColor' }}></span>
@@ -92,11 +82,7 @@ function ParkingDemo() {
   const free = slots.filter(s => s.state === 'free').length;
   return (
     <div className="demo-canvas">
-      <div className="kpi-row">
-        <div className="kpi"><div className="k">Total</div><div className="v">8</div></div>
-        <div className="kpi"><div className="k">Available</div><div className="v" style={{ color: 'var(--good)' }}>{free}</div></div>
-        <div className="kpi"><div className="k">Confidence</div><div className="v">96<small>.4%</small></div></div>
-      </div>
+      {/* KPIs removed: Total / Available / Confidence */}
       <div className="pgrid">
         {slots.map(s => <div key={s.id} className={"pslot " + s.state} data-slot={s.id}></div>)}
       </div>
@@ -107,21 +93,16 @@ function ParkingDemo() {
 /* ---------- Forecast demo ---------- */
 function ForecastDemo() {
   const labels = ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S'];
-  const actual = [420, 480, 510, 490, 600, 750, 820, 460, 520, 540, 510, 630, 780, 850];
+  // 'Actual' series removed per request; keep forecast demo only
   const forecast = [400, 490, 500, 470, 580, 720, 800, 450, 500, 550, 520, 610, 750, 860];
   return (
     <div className="demo-canvas">
-      <div className="kpi-row">
-        <div className="kpi"><div className="k">Accuracy</div><div className="v">94<small>%</small></div></div>
-        <div className="kpi"><div className="k">Speedup</div><div className="v">4.5<small>×</small></div></div>
-      </div>
+      {/* KPIs removed: Accuracy / Speedup */}
       <div className="fc-frame">
         <div className="fc-legend">
-          <span>Actual</span>
           <span className="f">Forecast</span>
         </div>
         <div style={{ position: 'relative', height: 120 }}>
-          <Sparkline data={actual} color="oklch(0.18 0.012 70)" fill height={120} />
           <div style={{ position: 'absolute', inset: 0 }}>
             <Sparkline data={forecast} color="oklch(0.55 0.14 35)" dashed height={120} />
           </div>
@@ -136,11 +117,9 @@ function ForecastDemo() {
 
 /* ---------- Hero live panel ---------- */
 function HeroLive() {
-  const [acc, setAcc] = useState(94);
   const [series, setSeries] = useState(Array.from({ length: 40 }, (_, i) => 50 + Math.sin(i / 4) * 10 + Math.random() * 6));
   useEffect(() => {
     const id = setInterval(() => {
-      setAcc(v => Math.min(99, Math.max(91, +(v + (Math.random() - 0.5) * 0.4).toFixed(1))));
       setSeries(s => [...s.slice(1), s[s.length - 1] + (Math.random() - 0.45) * 4]);
     }, 1400);
     return () => clearInterval(id);
@@ -151,9 +130,7 @@ function HeroLive() {
         <span className="label">Operator status</span>
         <span className="pulse">Live</span>
       </div>
-      <div className="stat-grid">
-        <div className="stat"><div className="k">Forecast acc.</div><div className="v">{acc}%</div></div>
-      </div>
+      {/* Forecast accuracy removed */}
       <div className="spark">
         <Sparkline data={series} color="oklch(0.55 0.14 35)" fill height={36} />
       </div>

@@ -20,6 +20,6 @@
     <rect x="840" y="420" width="70" height="120" rx="10" fill="#ff7a9e"/>
     <rect x="1080" y="260" width="70" height="120" rx="10" fill="#67f0a8"/>
   </g>
-  <text x="96" y="620" fill="#67f0a8" font-size="22" font-family="Arial, sans-serif">Green = Available</text>
+  <!-- Availability legend removed -->
   <text x="320" y="620" fill="#ff7a9e" font-size="22" font-family="Arial, sans-serif">Pink = Occupied</text>
 </svg>

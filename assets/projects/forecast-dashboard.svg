@@ -9,5 +9,5 @@
   <polyline points="96,580 150,570 220,555 290,540 360,520 430,505 500,490 570,470" stroke="#a78bfa" stroke-width="4" fill="none" opacity="0.8"/>
   <text x="90" y="198" fill="#9aabcf" font-size="20" font-family="Arial, sans-serif">Weekly Demand Trend</text>
   <text x="654" y="198" fill="#9aabcf" font-size="20" font-family="Arial, sans-serif">Top Fulfillment Centers</text>
-  <text x="654" y="458" fill="#9aabcf" font-size="20" font-family="Arial, sans-serif">Forecast vs Actual</text>
+  <text x="654" y="458" fill="#9aabcf" font-size="20" font-family="Arial, sans-serif">Forecast</text>
 </svg>
