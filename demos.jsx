@@ -114,7 +114,6 @@ function ForecastDemo() {
       <div className="kpi-row">
         <div className="kpi"><div className="k">Accuracy</div><div className="v">94<small>%</small></div></div>
         <div className="kpi"><div className="k">Speedup</div><div className="v">4.5<small>×</small></div></div>
-        <div className="kpi"><div className="k">Wastage</div><div className="v" style={{ color: 'var(--good)' }}>−18<small>%</small></div></div>
       </div>
       <div className="fc-frame">
         <div className="fc-legend">
@@ -166,33 +165,8 @@ function HeroLive() {
   );
 }
 
-/* ---------- Ticker (status bar) ---------- */
-function Ticker() {
-    const items = [
-    { t: 'MUTTHASALES', v: '+12.4%', cls: 'pos' },
-    { t: 'FORECAST_ACC', v: '94.0%', cls: 'pos' },
-    { t: 'EAR_THRESHOLD', v: '0.21', cls: '' },
-    { t: 'OCCUPANCY', v: '37.5%', cls: '' },
-    { t: 'WASTAGE', v: '-18.2%', cls: 'pos' },
-    { t: 'KOBLENZ', v: '14°C · ☁', cls: '' },
-    { t: 'UPTIME', v: '99.97%', cls: 'pos' },
-    // cycle/time KPI removed
-    { t: 'CGPA', v: '9.05', cls: 'pos' },
-  ];
-  const all = [...items, ...items];
-  return (
-    <div className="ticker-track">
-      {all.map((it, i) => (
-        <span key={i} className="item">
-          <span className="sep">{String(i + 1).padStart(2, '0')}</span>
-          <span>{it.t}</span>
-          <b className={it.cls}>{it.v}</b>
-        </span>
-      ))}
-    </div>
-  );
-}
+/* Ticker removed */
 
 window.PortfolioDemos = {
-  KpiBlock, EarDemo, ParkingDemo, ForecastDemo, HeroLive, Ticker, Sparkline
+  KpiBlock, EarDemo, ParkingDemo, ForecastDemo, HeroLive, Sparkline
 };

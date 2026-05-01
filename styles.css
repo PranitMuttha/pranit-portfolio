@@ -127,62 +127,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 600; font-family: var(--display); lette
     0 12px 40px rgba(20, 28, 48, 0.08);
 }
 
-/* ---------- Ticker ---------- */
-.ticker-bar {
-  width: 100%;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.35);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 9px 0;
-  position: relative;
-  z-index: 50;
-}
-.ticker-bar::before,
-.ticker-bar::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 80px;
-  z-index: 2;
-  pointer-events: none;
-}
-.ticker-bar::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
-.ticker-bar::after  { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker-scroll 40s linear infinite;
-}
-.ticker-track:hover { animation-play-state: paused; }
-@keyframes ticker-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.ticker-track .item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 28px;
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.07em;
-  color: var(--muted);
-  border-right: 1px solid rgba(20, 28, 48, 0.08);
-  white-space: nowrap;
-}
-.ticker-track .item b {
-  font-weight: 500;
-  color: var(--text-2);
-}
-.ticker-track .item b.pos { color: var(--good); }
-.ticker-track .sep {
-  color: rgba(20, 28, 48, 0.22);
-  font-size: 9px;
-  font-variant-numeric: tabular-nums;
-}
+/* Ticker removed */
 
 /* ---------- Nav ---------- */
 .nav {

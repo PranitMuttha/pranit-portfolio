@@ -106,15 +106,7 @@ const DEMO_MAP = {
   drowsiness:  () => (window.PortfolioDemos || {}).EarDemo,
 };
 
-function TickerBar() {
-  const { Ticker } = window.PortfolioDemos || {};
-  if (!Ticker) return null;
-  return (
-    <div className="ticker-bar">
-      <Ticker />
-    </div>
-  );
-}
+// TickerBar removed
 
 function Nav() {
   return (
@@ -264,7 +256,6 @@ function About() {
               <div className="stat"><div className="v">9.05</div><div className="k">CGPA · B.E.</div></div>
               <div className="stat"><div className="v">4+</div><div className="k">Production projects</div></div>
               <div className="stat"><div className="v">94%</div><div className="k">Forecast accuracy</div></div>
-              <div className="stat"><div className="v">−18%</div><div className="k">Wastage reduction</div></div>
             </div>
           </div>
         </div>
@@ -418,7 +409,6 @@ function App() {
     <>
       <div className="ambient"></div>
       <div className="grid-bg"></div>
-      <TickerBar />
       <Nav />
       <Hero />
       <Work />
