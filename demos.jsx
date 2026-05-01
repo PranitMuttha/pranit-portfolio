@@ -57,10 +57,6 @@ function EarDemo() {
   return (
     <div className="demo-canvas">
       <div className="ear-frame">
-        <div className={"ear-status " + (warn ? "warn" : "")}>
-          <span style={{ width: 6, height: 6, borderRadius: 99, background: 'currentColor' }}></span>
-          {warn ? "Fatigue detected" : "Active monitoring"}
-        </div>
         <Sparkline data={series} color={warn ? "oklch(0.55 0.16 25)" : "oklch(0.55 0.14 35)"} height={100} />
       </div>
     </div>
