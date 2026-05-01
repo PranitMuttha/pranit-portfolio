@@ -9,15 +9,9 @@ function Sparkline() {
 
 /* ---------- KPI block ---------- */
 function KpiBlock() {
-  const [revenue, setRevenue] = useState(842.5);
-  const [orders, setOrders] = useState(1248);
-  const [cycle, setCycle] = useState(4.2);
   const [series, setSeries] = useState([42, 58, 51, 68, 74, 91, 104, 98, 112, 124]);
   useEffect(() => {
     const id = setInterval(() => {
-      setRevenue(r => +(r + (Math.random() - 0.4) * 4).toFixed(1));
-      setOrders(o => o + Math.round(Math.random() * 8));
-      setCycle(c => +Math.max(3.4, Math.min(5.2, c + (Math.random() - 0.5) * 0.1)).toFixed(2));
       setSeries(s => {
         const next = Math.max(35, s[s.length - 1] + (Math.random() - 0.4) * 8);
         return [...s.slice(1), next];
@@ -27,14 +21,9 @@ function KpiBlock() {
   }, []);
   return (
     <div className="demo-canvas">
-      <div className="kpi-row">
-        <div className="kpi"><div className="k">Pipeline</div><div className="v">${revenue}<small>K</small></div><div className="delta">+12.4%</div></div>
-        <div className="kpi"><div className="k">Orders</div><div className="v">{orders.toLocaleString()}</div><div className="delta">+5.2%</div></div>
-        <div className="kpi"><div className="k">Cycle</div><div className="v">{cycle}<small>d</small></div><div className="delta neg">−1.1d</div></div>
-      </div>
       <div className="spark-frame">
         <div className="label-row">
-          <span className="label">Revenue activity · 30d</span>
+          <span className="label">Activity · 30d</span>
           <span className="label" style={{ color: 'var(--accent)' }}>LIVE</span>
         </div>
         <Sparkline data={series} color="oklch(0.55 0.14 35)" fill height={120} />
@@ -148,12 +137,10 @@ function ForecastDemo() {
 
 /* ---------- Hero live panel ---------- */
 function HeroLive() {
-  const [pl, setPl] = useState(842.5);
   const [acc, setAcc] = useState(94);
   const [series, setSeries] = useState(Array.from({ length: 40 }, (_, i) => 50 + Math.sin(i / 4) * 10 + Math.random() * 6));
   useEffect(() => {
     const id = setInterval(() => {
-      setPl(v => +(v + (Math.random() - 0.4) * 2).toFixed(1));
       setAcc(v => Math.min(99, Math.max(91, +(v + (Math.random() - 0.5) * 0.4).toFixed(1))));
       setSeries(s => [...s.slice(1), s[s.length - 1] + (Math.random() - 0.45) * 4]);
     }, 1400);
@@ -166,7 +153,6 @@ function HeroLive() {
         <span className="pulse">Live</span>
       </div>
       <div className="stat-grid">
-        <div className="stat"><div className="k">Pipeline</div><div className="v">${pl}K</div></div>
         <div className="stat"><div className="k">Forecast acc.</div><div className="v">{acc}%</div></div>
       </div>
       <div className="spark">
@@ -182,7 +168,7 @@ function HeroLive() {
 
 /* ---------- Ticker (status bar) ---------- */
 function Ticker() {
-  const items = [
+    const items = [
     { t: 'MUTTHASALES', v: '+12.4%', cls: 'pos' },
     { t: 'FORECAST_ACC', v: '94.0%', cls: 'pos' },
     { t: 'EAR_THRESHOLD', v: '0.21', cls: '' },
@@ -190,7 +176,7 @@ function Ticker() {
     { t: 'WASTAGE', v: '-18.2%', cls: 'pos' },
     { t: 'KOBLENZ', v: '14°C · ☁', cls: '' },
     { t: 'UPTIME', v: '99.97%', cls: 'pos' },
-    { t: 'CYCLE_TIME', v: '4.2d', cls: '' },
+    // cycle/time KPI removed
     { t: 'CGPA', v: '9.05', cls: 'pos' },
   ];
   const all = [...items, ...items];
