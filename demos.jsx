@@ -24,7 +24,6 @@ function KpiBlock() {
       <div className="spark-frame">
         <div className="label-row">
           <span className="label">Activity · 30d</span>
-          <span className="label" style={{ color: 'var(--accent)' }}>LIVE</span>
         </div>
         <Sparkline data={series} color="oklch(0.55 0.14 35)" fill height={120} />
       </div>
@@ -95,17 +94,8 @@ function HeroLive() {
   }, []);
   return (
     <div className="hero-live">
-      <div className="head">
-        <span className="label">Operator status</span>
-        <span className="pulse">Live</span>
-      </div>
-      {/* Forecast accuracy removed */}
       <div className="spark">
         <Sparkline data={series} color="oklch(0.55 0.14 35)" fill height={36} />
-      </div>
-      <div className="label" style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <span>SIG-A · MutthaSales</span>
-        <span style={{ color: 'var(--good)' }}>● healthy</span>
       </div>
     </div>
   );
