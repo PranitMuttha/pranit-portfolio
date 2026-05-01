@@ -8,8 +8,5 @@
   <circle cx="425" cy="355" r="18" fill="none" stroke="#a78bfa" stroke-width="4"/>
   <circle cx="555" cy="355" r="18" fill="none" stroke="#a78bfa" stroke-width="4"/>
   <path d="M430 452 Q 490 495 550 452" stroke="#ffd166" stroke-width="5" fill="none"/>
-  <text x="928" y="230" fill="#edf2ff" font-size="24" font-family="Arial, sans-serif">Status</text>
-  <text x="928" y="280" fill="#67f0a8" font-size="22" font-family="Arial, sans-serif">Eyes Open: YES</text>
-  <text x="928" y="320" fill="#67f0a8" font-size="22" font-family="Arial, sans-serif">Alert: OFF</text>
-  <!-- FPS removed -->
+  <!-- Status text removed -->
 </svg>

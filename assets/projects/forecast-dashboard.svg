@@ -7,7 +7,5 @@
   <rect x="620" y="418" width="604" height="240" rx="16" fill="#15213f"/>
   <polyline points="96,560 150,530 220,540 290,485 360,500 430,430 500,410 570,360" stroke="#5ce1ff" stroke-width="6" fill="none"/>
   <polyline points="96,580 150,570 220,555 290,540 360,520 430,505 500,490 570,470" stroke="#a78bfa" stroke-width="4" fill="none" opacity="0.8"/>
-  <text x="90" y="198" fill="#9aabcf" font-size="20" font-family="Arial, sans-serif">Weekly Demand Trend</text>
-  <text x="654" y="198" fill="#9aabcf" font-size="20" font-family="Arial, sans-serif">Top Fulfillment Centers</text>
-  <text x="654" y="458" fill="#9aabcf" font-size="20" font-family="Arial, sans-serif">Forecast</text>
+  <!-- Caption text removed -->
 </svg>
