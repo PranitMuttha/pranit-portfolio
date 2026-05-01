@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Outfit:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js removed per request -->
   <style>
     :root {
       --bg: #050814; 
@@ -287,10 +287,10 @@
 
         <div class="mock-chart-row">
           <div class="mock-chart-box">
-            <canvas id="revenueChart"></canvas>
+            <div class="chart-removed" aria-hidden="true" style="height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);">Chart removed</div>
           </div>
           <div class="mock-chart-box">
-            <canvas id="channelChart"></canvas>
+            <div class="chart-removed" aria-hidden="true" style="height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);">Chart removed</div>
             <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne';font-size:1.5rem;">B2B</div>
           </div>
         </div>
@@ -341,66 +341,6 @@
     </div>
   </main>
 
-  <script>
-    Chart.defaults.color = '#8b9ac4';
-    Chart.defaults.font.family = "'Outfit', sans-serif";
-
-    // Main Revenue Chart
-    const ctxRev = document.getElementById('revenueChart').getContext('2d');
-    
-    const gradRev = ctxRev.createLinearGradient(0, 0, 0, 250);
-    gradRev.addColorStop(0, 'rgba(167, 139, 250, 0.4)');
-    gradRev.addColorStop(1, 'rgba(167, 139, 250, 0.0)');
-
-    new Chart(ctxRev, {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        datasets: [{
-          label: 'Platform Revenue Activity',
-          data: [42, 58, 51, 68, 74, 91, 104],
-          borderColor: '#a78bfa',
-          backgroundColor: gradRev,
-          borderWidth: 3,
-          fill: true,
-          tension: 0.4,
-          pointRadius: 0,
-          pointHoverRadius: 6
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
-        scales: {
-          x: { grid: { display: false } },
-          y: { grid: { color: 'rgba(255,255,255,0.05)' }, beginAtZero: true }
-        },
-        animation: { duration: 2500, easing: 'easeOutQuart' }
-      }
-    });
-
-    // Channel Doughnut Chart
-    const ctxChannel = document.getElementById('channelChart').getContext('2d');
-    new Chart(ctxChannel, {
-      type: 'doughnut',
-      data: {
-        labels: ['Direct', 'Partner', 'Organic'],
-        datasets: [{
-          data: [55, 30, 15],
-          backgroundColor: ['#a78bfa', '#5ce1ff', '#ffd166'],
-          borderWidth: 0,
-          hoverOffset: 4
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        cutout: '75%',
-        plugins: { legend: { display: false } },
-        animation: { animateScale: true, animateRotate: true, duration: 2000 }
-      }
-    });
-  </script>
+  <!-- Charts removed from this page -->
 </body>
 </html>

@@ -1,50 +1,10 @@
 /* global React */
 const { useEffect, useRef, useState } = React;
 
-/* ---------- Sparkline ---------- */
-function Sparkline({ data, height = 36, color, fill = false, dashed = false }) {
-  const ref = useRef(null);
-  useEffect(() => {
-    try {
-      const c = ref.current; if (!c) return;
-      if (!Array.isArray(data) || data.length < 2) return;
-      const ctx = c.getContext('2d'); if (!ctx) return;
-      const dpr = window.devicePixelRatio || 1;
-      const w = Math.max(1, c.clientWidth || c.parentElement?.clientWidth || 200);
-      const h = Math.max(1, c.clientHeight || height);
-      c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, w, h);
-      let min = Infinity, max = -Infinity;
-      for (const v of data) { if (Number.isFinite(v)) { if (v < min) min = v; if (v > max) max = v; } }
-      if (!Number.isFinite(min) || !Number.isFinite(max)) return;
-      const range = (max - min) || 1;
-      const pad = 3;
-      const innerW = Math.max(1, w - pad * 2);
-      const innerH = Math.max(1, h - pad * 2);
-      const denom = Math.max(1, data.length - 1);
-      const xs = data.map((_, i) => pad + (i / denom) * innerW);
-      const ys = data.map(v => h - pad - ((v - min) / range) * innerH);
-      ctx.lineWidth = 1.5;
-      ctx.strokeStyle = color || '#000';
-      ctx.setLineDash(dashed ? [4, 4] : []);
-      ctx.beginPath();
-      xs.forEach((x, i) => { i === 0 ? ctx.moveTo(x, ys[i]) : ctx.lineTo(x, ys[i]); });
-      ctx.stroke();
-      if (fill) {
-        ctx.lineTo(xs[xs.length - 1], h);
-        ctx.lineTo(xs[0], h);
-        ctx.closePath();
-        const grad = ctx.createLinearGradient(0, 0, 0, h);
-        grad.addColorStop(0, (color || '#000') + '55');
-        grad.addColorStop(1, (color || '#000') + '00');
-        ctx.fillStyle = grad;
-        ctx.fill();
-      }
-    } catch (err) {
-      console.warn('Sparkline render skipped:', err);
-    }
-  }, [data, color, fill, dashed, height]);
-  return <canvas ref={ref} style={{ width: '100%', height, display: 'block' }} />;
+/* ---------- Sparkline (removed) ---------- */
+function Sparkline() {
+  // Charts removed per request — render nothing so layout stays intact.
+  return null;
 }
 
 /* ---------- KPI block ---------- */

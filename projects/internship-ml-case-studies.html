@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Outfit:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js removed per request -->
   <style>
     :root {
       --bg: #070914; 
@@ -177,7 +177,7 @@
           <div class="ml-subtitle">Iris classification via Logistic Regression</div>
         </div>
         <div class="chart-box">
-          <canvas id="scatterChart"></canvas>
+          <div class="chart-removed" aria-hidden="true" style="height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);">Chart removed</div>
         </div>
       </div>
       <div class="ml-panel">
@@ -186,7 +186,7 @@
           <div class="ml-subtitle">Multiple Linear Regression Feature Importance</div>
         </div>
         <div class="chart-box">
-          <canvas id="barChart"></canvas>
+          <div class="chart-removed" aria-hidden="true" style="height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);">Chart removed</div>
         </div>
       </div>
     </div>
@@ -234,71 +234,6 @@
     </div>
   </main>
 
-  <script>
-    Chart.defaults.color = '#8b9ac4';
-    Chart.defaults.font.family = "'Outfit', sans-serif";
-
-    // Scatter Chart (Classification Sim)
-    const ctxScatter = document.getElementById('scatterChart').getContext('2d');
-    
-    // Generate mock scatter points
-    const genP = (cx, cy, count, jitter, color) => Array.from({length: count}, () => ({
-      x: cx + (Math.random()-0.5)*jitter, 
-      y: cy + (Math.random()-0.5)*jitter
-    }));
-
-    new Chart(ctxScatter, {
-      type: 'scatter',
-      data: {
-        datasets: [{
-          label: 'Class A',
-          data: genP(3, 4, 30, 2, '#5ce1ff'),
-          backgroundColor: 'rgba(92, 225, 255, 0.7)'
-        }, {
-          label: 'Class B',
-          data: genP(6, 7, 30, 2.5, '#a78bfa'),
-          backgroundColor: 'rgba(167, 139, 250, 0.7)'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          x: { grid: { color: 'rgba(255,255,255,0.05)' } },
-          y: { grid: { color: 'rgba(255,255,255,0.05)' } }
-        },
-        animation: { duration: 2000 }
-      }
-    });
-
-    // Bar Chart (Feature Importance Sim)
-    const ctxBar = document.getElementById('barChart').getContext('2d');
-    new Chart(ctxBar, {
-      type: 'bar',
-      data: {
-        labels: ['Store Traffic', 'Promo Flags', 'Holiday', 'Comp Price', 'Inventory', 'Weather'],
-        datasets: [{
-          label: 'Feature Weight',
-          data: [0.85, 0.62, 0.51, -0.42, 0.28, -0.15],
-          backgroundColor: (ctx) => {
-            return ctx.raw > 0 ? '#ffd166' : '#ff5c77';
-          },
-          borderRadius: 4
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          x: { grid: { color: 'rgba(255,255,255,0.05)' } },
-          y: { grid: { display: false } }
-        },
-        animation: { duration: 1500, delay: 500 }
-      }
-    });
-  </script>
+  <!-- Charts removed from this page -->
 </body>
 </html>

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Outfit:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js removed per request -->
   <style>
     :root {
       --bg: #030508; 
@@ -229,7 +229,7 @@
       </div>
       
       <div class="chart-container">
-        <canvas id="earChart"></canvas>
+        <div class="chart-removed" aria-hidden="true" style="height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);">Chart removed</div>
       </div>
     </div>
 
@@ -272,75 +272,32 @@
   </main>
 
   <script>
-    Chart.defaults.color = '#8b9ac4';
-    Chart.defaults.font.family = "'Outfit', sans-serif";
-    
-    const ctx = document.getElementById('earChart').getContext('2d');
-    
-    // Simulate real-time data array
-    const dataPoints = Array.from({length: 40}, () => 0.30 + Math.random()*0.05);
-    const labels = Array.from({length: 40}, (_, i) => i);
-    
-    const chart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'EAR',
-          data: dataPoints,
-          borderColor: '#5ce1ff',
-          borderWidth: 2,
-          tension: 0.3,
-          pointRadius: 0
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: { duration: 0 },
-        plugins: { legend: { display: false } },
-        scales: {
-          x: { display: false },
-          y: { min: 0.1, max: 0.45, grid: { color: 'rgba(255,255,255,0.05)' } }
-        }
-      }
-    });
-
+    // Charts removed — keep simulation of values for UI without rendering a chart
     const valEl = document.getElementById('earVal');
     const riskEl = document.getElementById('riskVal');
     const badgeEl = document.getElementById('statusBadge');
-    
+
     let tick = 0;
     setInterval(() => {
       tick++;
-      // Simulate normal blinking and occasional drop (drowsiness)
       let newVal = 0.30 + Math.random()*0.05;
-      
-      // Simulate Drowsiness event every ~8 seconds
-      if(tick % 80 > 65) {
-        newVal = 0.15 + Math.random()*0.05; // Drop
+
+      if (tick % 80 > 65) {
+        newVal = 0.15 + Math.random()*0.05;
         badgeEl.className = 'status-indicator warning';
         badgeEl.innerHTML = '⚠️ FATIGUE DETECTED';
-        chart.data.datasets[0].borderColor = '#ff5c77';
         riskEl.textContent = '89%';
-        riskEl.style.color = '#ff5c77';
+        riskEl.style.color = 'var(--danger)';
       } else {
         badgeEl.className = 'status-indicator safe';
         badgeEl.innerHTML = 'Active Monitoring';
-        chart.data.datasets[0].borderColor = '#5ce1ff';
         riskEl.textContent = (10 + Math.random()*5).toFixed(0) + '%';
         riskEl.style.color = 'var(--text)';
       }
 
-      // Blink detection
-      if(Math.random() > 0.9 && tick % 80 <= 65) newVal = 0.18; // Quick blink
+      if (Math.random() > 0.9 && tick % 80 <= 65) newVal = 0.18;
 
       valEl.textContent = newVal.toFixed(2);
-      
-      dataPoints.push(newVal);
-      dataPoints.shift();
-      chart.update();
-
     }, 100);
   </script>
 </body>
